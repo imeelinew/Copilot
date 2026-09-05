@@ -82,10 +82,11 @@ button { color: inherit; }
 .favorite { border: 0; color: #aaa69d; background: none; cursor: pointer; font-size: 23px; }
 .favorite.active { color: #e0a43b; }
 .answer-panel h2 { margin: 20px 0 18px; font-family: Georgia, 'Noto Serif SC', serif; font-size: clamp(22px, 2vw, 31px); font-weight: 500; line-height: 1.35; letter-spacing: -.02em; }
-.length-switcher { display: inline-flex; padding: 3px; border-radius: 7px; background: #ece9e3; }
-.length-switcher button { padding: 5px 13px; border: 0; border-radius: 5px; color: #8a867e; background: transparent; cursor: pointer; font-size: 9px; }
-.length-switcher button.active { color: var(--ink); background: white; box-shadow: 0 1px 4px rgba(40,35,25,.08); }
 .answer-card { margin-top: 25px; }
+.answer-card.core .answer-body { border-left-color: #4c9a67; background: #edf3ea; color: #1d6b35; }
+.answer-card.core .section-title { color: #47804f; }
+.answer-card.extra .answer-body { border-left-color: #d29a55; background: #f6efe3; color: #9d5a10; }
+.answer-card.extra .section-title { color: #b07830; }
 .section-title { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; color: #77736b; font-size: 10px; letter-spacing: .04em; text-transform: uppercase; }
 .quote-mark { color: var(--accent); font-family: Georgia, serif; font-size: 27px; line-height: 10px; }
 .answer-body { position: relative; padding: 20px 22px; border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; background: #f2eee8; }

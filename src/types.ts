@@ -1,5 +1,3 @@
-export type AnswerLength = 'short' | 'standard' | 'deep'
-
 export interface InterviewQuestion {
   id: string
   title: string

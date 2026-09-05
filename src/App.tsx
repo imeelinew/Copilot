@@ -1,14 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { categories, questions, searchQuestions } from './content'
-import type { AnswerLength, InterviewQuestion } from './types'
+import type { InterviewQuestion } from './types'
 
-const sectionForLength: Record<AnswerLength, string> = {
-  short: '30 秒回答',
-  standard: '标准回答',
-  deep: '深入回答',
-}
-
-const knownSectionNames = new Set(['30 秒回答', '标准回答', '深入回答', '回答要点', '面试官可能追问', '代码证据'])
+// 旧格式（30 秒/标准/深入）通过 AnswerPanel 里的回退映射到新结构。
+const knownSectionNames = new Set(['核心回答', '展开回答', '30 秒回答', '标准回答', '深入回答', '回答要点', '面试官可能追问', '代码证据'])
 
 function renderText(text = '') {
   return text.split('\n').map((line, index) => {
@@ -27,7 +22,6 @@ function App() {
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('all')
   const [selectedId, setSelectedId] = useState(questions[0]?.id ?? '')
-  const [answerLength, setAnswerLength] = useState<AnswerLength>('standard')
   const [favorites, setFavorites] = useState<string[]>(() => {
     try { return JSON.parse(localStorage.getItem('interview-favorites') || '[]') }
     catch { return [] }
@@ -169,7 +163,7 @@ function App() {
       </main>
 
       <aside className="answer-panel">
-        {selected ? <AnswerPanel question={selected} answerLength={answerLength} setAnswerLength={setAnswerLength} favorite={favorites.includes(selected.id)} toggleFavorite={toggleFavorite} /> : (
+        {selected ? <AnswerPanel question={selected} favorite={favorites.includes(selected.id)} toggleFavorite={toggleFavorite} /> : (
           <div className="empty-answer"><span>⌕</span><p>选择一道题查看口语回答</p></div>
         )}
       </aside>
@@ -177,20 +171,18 @@ function App() {
   )
 }
 
-function AnswerPanel({ question, answerLength, setAnswerLength, favorite, toggleFavorite }: {
+function AnswerPanel({ question, favorite, toggleFavorite }: {
   question: InterviewQuestion
-  answerLength: AnswerLength
-  setAnswerLength: (value: AnswerLength) => void
   favorite: boolean
   toggleFavorite: (id: string) => void
 }) {
-  const preferredSection = sectionForLength[answerLength]
-  const answer = question.sections[preferredSection]
+  const coreAnswer = question.sections['核心回答']
     || question.sections['标准回答']
     || question.sections['30 秒回答']
     || ''
+  const extraAnswer = question.sections['展开回答'] || question.sections['深入回答'] || ''
   // 非标准格式的题目（如整份简历）没有固定小节名，按原文小节顺序展示。
-  const extraSections = answer
+  const extraSections = coreAnswer || extraAnswer
     ? []
     : Object.entries(question.sections).filter(([name]) => !knownSectionNames.has(name))
 
@@ -202,23 +194,22 @@ function AnswerPanel({ question, answerLength, setAnswerLength, favorite, toggle
       </div>
       <h2>{question.title}</h2>
 
-      {answer && (
-        <div className="length-switcher">
-          {([['short', '30 秒'], ['standard', '标准'], ['deep', '深入']] as const).map(([value, label]) => (
-            <button key={value} className={answerLength === value ? 'active' : ''} onClick={() => setAnswerLength(value)}>{label}</button>
-          ))}
-        </div>
+      {coreAnswer && (
+        <section className="answer-card core">
+          <div className="section-title"><span className="quote-mark">“</span><strong>核心回答</strong></div>
+          <div className="answer-body">{renderText(coreAnswer)}</div>
+        </section>
       )}
 
-      {answer && (
-        <section className="answer-card spoken">
-          <div className="section-title"><span className="quote-mark">“</span><strong>可以这样说</strong></div>
-          <div className="answer-body">{renderText(answer)}</div>
+      {extraAnswer && (
+        <section className="answer-card extra">
+          <div className="section-title"><strong>展开回答</strong></div>
+          <div className="answer-body">{renderText(extraAnswer)}</div>
         </section>
       )}
 
       {extraSections.map(([name, text]) => (
-        <section key={name} className="answer-card spoken">
+        <section key={name} className="answer-card">
           <div className="section-title"><strong>{name}</strong></div>
           <div className="answer-body">{renderText(text)}</div>
         </section>
