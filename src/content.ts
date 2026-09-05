@@ -54,6 +54,9 @@ function parseMarkdown(sourcePath: string, raw: string): InterviewQuestion {
     sections[heading[1].trim()] = body.slice(start, end).trim()
   })
 
+  // 没有 ## 小节的文件（如整篇自我介绍）把正文整体作为一个小节展示。
+  if (!headings.length) sections['正文'] = body.replace(/^# .*\n+/, '').trim()
+
   const category = meta.category || 'engineering'
   return {
     id: meta.id,

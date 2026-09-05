@@ -8,11 +8,18 @@ const sectionForLength: Record<AnswerLength, string> = {
   deep: '深入回答',
 }
 
+const knownSectionNames = new Set(['30 秒回答', '标准回答', '深入回答', '回答要点', '面试官可能追问', '代码证据'])
+
 function renderText(text = '') {
   return text.split('\n').map((line, index) => {
-    const content = line.replace(/^[-*] /, '').replace(/`([^`]+)`/g, '$1')
+    const heading = line.match(/^#{1,6} (.+)$/)
+    const content = line
+      .replace(/^([-*] |#{1,6} )/, '')
+      .replace(/`([^`]+)`/g, '$1')
+      .replace(/\*\*([^*]+)\*\*/g, '$1')
     if (!content.trim()) return <br key={index} />
-    return line.startsWith('- ') ? <li key={index}>{content}</li> : <p key={index}>{content}</p>
+    if (heading) return <p key={index}><strong>{content}</strong></p>
+    return line.startsWith('- ') || line.startsWith('* ') ? <li key={index}>{content}</li> : <p key={index}>{content}</p>
   })
 }
 
@@ -182,6 +189,10 @@ function AnswerPanel({ question, answerLength, setAnswerLength, favorite, toggle
     || question.sections['标准回答']
     || question.sections['30 秒回答']
     || ''
+  // 非标准格式的题目（如整份简历）没有固定小节名，按原文小节顺序展示。
+  const extraSections = answer
+    ? []
+    : Object.entries(question.sections).filter(([name]) => !knownSectionNames.has(name))
 
   return (
     <div className="answer-scroll">
@@ -191,16 +202,27 @@ function AnswerPanel({ question, answerLength, setAnswerLength, favorite, toggle
       </div>
       <h2>{question.title}</h2>
 
-      <div className="length-switcher">
-        {([['short', '30 秒'], ['standard', '标准'], ['deep', '深入']] as const).map(([value, label]) => (
-          <button key={value} className={answerLength === value ? 'active' : ''} onClick={() => setAnswerLength(value)}>{label}</button>
-        ))}
-      </div>
+      {answer && (
+        <div className="length-switcher">
+          {([['short', '30 秒'], ['standard', '标准'], ['deep', '深入']] as const).map(([value, label]) => (
+            <button key={value} className={answerLength === value ? 'active' : ''} onClick={() => setAnswerLength(value)}>{label}</button>
+          ))}
+        </div>
+      )}
 
-      <section className="answer-card spoken">
-        <div className="section-title"><span className="quote-mark">“</span><strong>可以这样说</strong></div>
-        <div className="answer-body">{renderText(answer)}</div>
-      </section>
+      {answer && (
+        <section className="answer-card spoken">
+          <div className="section-title"><span className="quote-mark">“</span><strong>可以这样说</strong></div>
+          <div className="answer-body">{renderText(answer)}</div>
+        </section>
+      )}
+
+      {extraSections.map(([name, text]) => (
+        <section key={name} className="answer-card spoken">
+          <div className="section-title"><strong>{name}</strong></div>
+          <div className="answer-body">{renderText(text)}</div>
+        </section>
+      ))}
 
       {question.sections['回答要点'] && (
         <section className="answer-card points"><div className="section-title"><span>✓</span><strong>回答要点</strong></div><ul>{renderText(question.sections['回答要点'])}</ul></section>
