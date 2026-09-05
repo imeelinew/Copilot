@@ -1,4 +1,5 @@
-import { parseMarkdown } from './question-bank'
+import users from '../content/users.json'
+import { buildRepositoryBanks } from './question-bank'
 
 const markdownModules = import.meta.glob('../content/**/*.md', {
   eager: true,
@@ -6,6 +7,5 @@ const markdownModules = import.meta.glob('../content/**/*.md', {
   import: 'default',
 }) as Record<string, string>
 
-export const questions = Object.entries(markdownModules)
-  .map(([path, raw]) => parseMarkdown(path, raw))
-  .sort((a, b) => Number(b.priority === 'high') - Number(a.priority === 'high'))
+export const repositoryUsers = buildRepositoryBanks(users,
+  Object.entries(markdownModules).map(([path, raw]) => ({ name: path.replace('../content/', ''), raw })))

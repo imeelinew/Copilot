@@ -127,15 +127,6 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .user-detail strong { overflow-wrap: anywhere; font-size: 12px; }
 .user-detail small { color: var(--muted); font-size: 10px; }
 .user-check { color: var(--accent); }
-.create-user { margin-top: 10px; padding: 14px 8px 5px; border-top: 1px solid var(--line); }
-.create-user label { display: block; margin-bottom: 8px; font-size: 11px; font-weight: 600; }
-.create-user > div { display: flex; gap: 6px; }
-.create-user input { min-width: 0; width: 100%; padding: 8px; border: 1px solid var(--line); border-radius: 6px; background: white; font-size: 12px; }
-.create-user button, .empty-bank button { flex: none; padding: 8px 12px; border: 0; border-radius: 6px; color: white; background: var(--ink); cursor: pointer; font-size: 12px; }
-.create-user button:disabled, .import-button:disabled, .empty-bank button:disabled { opacity: .5; cursor: wait; }
-.create-user small { display: block; margin-top: 8px; color: var(--muted); font-size: 10px; line-height: 1.6; }
-.create-user p { color: #b54528; font-size: 11px; }
-.import-button { flex: none; margin-left: auto; padding: 5px 9px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); font-size: 11px; cursor: pointer; }
 .result-heading { gap: 10px; }
 .import-message { padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; }
 .empty-bank { padding: 45px 18px; border: 1px dashed #d8d0c4; border-radius: 12px; text-align: center; }
@@ -144,3 +135,8 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .empty-bank p { color: var(--muted); font-size: 12px; line-height: 1.9; }
 .empty-bank small { display: block; margin-top: 14px; color: var(--muted); font-size: 10px; }
 .storage-error { padding: 14px 24px; color: #963e27; background: #fff0e8; font-size: 13px; }
+
+.repository-note { margin: 10px 8px 4px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1.8; }
+.bank-origin { margin: 16px 2px 0; color: var(--muted); font-size: 10px; }
+.legacy-notice { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 24px; border-bottom: 1px solid #e7d5b5; background: #faf0da; color: #775c30; font-size: 12px; line-height: 1.6; }
+.legacy-notice button { flex: none; padding: 7px 12px; border: 1px solid #d5c19d; border-radius: 6px; background: var(--paper); cursor: pointer; font-size: 12px; }

@@ -1,63 +1,96 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
-import { readdirSync, readFileSync } from 'node:fs'
-import { buildQuestionBank, getCategories, searchQuestions } from '../src/question-bank.ts'
-import { createProfile, loadProfiles, PROFILE_STORAGE_KEY } from '../src/profiles.ts'
+import { mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
+import { buildQuestionBank, buildRepositoryBanks, getCategories, searchQuestions } from '../src/question-bank.ts'
+import { loadProfiles, PROFILE_STORAGE_KEY, LEGACY_STORAGE_KEY } from '../src/profiles.ts'
+import { importLocalBank } from '../scripts/import-local-bank.mjs'
 
 const document = (id, title = id, category = 'react') => ({ name: `${id}.md`, raw: `---\nid: ${id}\ntitle: ${title}\ncategory: ${category}\n---\n\n## 核心回答\n\n${title} 的答案。` })
-const storage = (values) => ({ getItem: (key) => values[key] ?? null })
+const storage = (values = {}) => ({ getItem: (key) => values[key] ?? null })
+const users = [{ id: 'default', name: '牛' }, { id: 'aaron', name: 'Aaron' }]
+const ids = users.map((user) => user.id)
+const docs = [
+  { ...document('same', '原用户问题', 'javascript'), name: 'default/same.md' },
+  { ...document('same', '独有测试题'), name: 'aaron/react/same.md' },
+]
 
-test('137 original questions remain valid and unique', () => {
-  const files = readdirSync(new URL('../content/', import.meta.url), { recursive: true }).filter((name) => name.endsWith('.md'))
-  const bank = buildQuestionBank([], files.map((name) => ({ name, raw: readFileSync(new URL(`../content/${name}`, import.meta.url), 'utf8') })))
-  assert.equal(bank.length, 137)
-  assert.equal(new Set(bank.map((question) => question.id)).size, 137)
+test('repository content has 137 original questions and a separate Aaron bank', () => {
+  const root = new URL('../content/', import.meta.url)
+  const registry = JSON.parse(readFileSync(new URL('users.json', root), 'utf8'))
+  const documents = readdirSync(root, { recursive: true }).filter((name) => name.endsWith('.md'))
+    .map((name) => ({ name, raw: readFileSync(new URL(name, root), 'utf8') }))
+  const banks = buildRepositoryBanks(registry, documents)
+  assert.equal(banks.find((user) => user.id === 'default').questions.length, 137)
+  assert.ok(banks.some((user) => user.id === 'aaron'))
 })
 
-test('migrates legacy favorites only into the default user', () => {
-  const store = loadProfiles(storage({ 'interview-favorites': '["old-question"]' }))
-  assert.deepEqual(store.users[0].favorites, ['old-question'])
-  const second = createProfile(store.users, ' 第二位用户 ')
-  assert.equal(second.name, '第二位用户')
-  assert.deepEqual(second.favorites, [])
-  assert.deepEqual(second.documents, [])
-  assert.throws(() => createProfile([...store.users, second], '第二位用户'), /已存在/)
-  assert.throws(() => createProfile(store.users, '   '))
+test('two clean browser stores resolve identical users and banks without importing', () => {
+  const first = loadProfiles(storage(), ids)
+  const second = loadProfiles(storage(), ids)
+  assert.deepEqual(first, second)
+  const banks = buildRepositoryBanks(users, docs)
+  assert.equal(banks[0].questions.length, 1)
+  assert.equal(banks[1].questions.length, 1)
+  assert.equal(searchQuestions(banks[1].questions, '独有测试题')[0].question.title, '独有测试题')
+  assert.equal(banks[0].questions.some((q) => q.title === '独有测试题'), false)
+  assert.deepEqual(getCategories(banks[1].questions).map((item) => item.id), ['all', 'react'])
+  assert.deepEqual(buildRepositoryBanks(users, []).map((user) => user.questions), [[], []])
 })
 
-test('switch and refresh preserve separate banks, favorites and active user', () => {
-  const store = loadProfiles(storage({}))
-  const second = createProfile(store.users, '测试用户')
-  second.documents = [document('custom', '独有测试题')]
-  second.favorites = ['custom']
-  store.users.push(second)
-  store.activeUserId = second.id
-  const restored = loadProfiles(storage({ [PROFILE_STORAGE_KEY]: JSON.stringify(store) }))
-  assert.deepEqual(restored, store)
-  const originalBank = buildQuestionBank([], [document('original', '原用户问题', 'javascript')])
-  const secondBank = buildQuestionBank([], restored.users[1].documents)
-  assert.equal(searchQuestions(secondBank, '独有测试题')[0].question.id, 'custom')
-  assert.equal(searchQuestions(originalBank, '独有测试题').some(({ question }) => question.id === 'custom'), false)
-  assert.deepEqual(getCategories(secondBank).map((item) => item.id), ['all', 'react'])
-  assert.deepEqual(restored.users[0].favorites, [])
-  assert.deepEqual(searchQuestions([], ''), [])
+test('registry rejects unknown folders, duplicate users and duplicate IDs within one bank', () => {
+  assert.throws(() => buildRepositoryBanks(users, [{ ...docs[0], name: 'unknown/q.md' }]), /已配置/)
+  assert.throws(() => buildRepositoryBanks(users, [{ ...docs[0], name: 'default/../aaron/q.md' }]))
+  assert.throws(() => buildRepositoryBanks([...users, users[0]], []), /唯一/)
+  assert.throws(() => buildRepositoryBanks([{ id: '../escape', name: 'bad' }], []))
+  assert.throws(() => buildRepositoryBanks(users, [docs[0], { ...docs[0], name: 'default/another.md' }]), /已存在/)
 })
 
-test('import rejects duplicates and invalid Markdown without mutating existing bank', () => {
-  const original = buildQuestionBank([], [document('same')])
-  assert.throws(() => buildQuestionBank(original, [document('same')]), /已存在/)
-  assert.throws(() => buildQuestionBank([], [document('same'), document('same')]), /已存在/)
-  assert.throws(() => buildQuestionBank(original, [{ name: 'invalid.md', raw: '# missing metadata' }]), /需要/)
-  assert.equal(original.length, 1)
+test('legacy preferences migrate without importing local users or overwriting repository data', () => {
+  const legacy = JSON.stringify({ activeUserId: 'old-local-user', users: [
+    { id: 'default', name: '旧名称', favorites: ['same'], documents: [document('local-only')] },
+    { id: 'old-local-user', name: '本地用户', favorites: ['same'], documents: [] },
+  ] })
+  const values = { [LEGACY_STORAGE_KEY]: legacy }
+  const restored = loadProfiles(storage(values), ids)
+  assert.equal(restored.activeUserId, 'default')
+  assert.deepEqual(restored.favorites.default, ['same'])
+  assert.equal(restored.favorites.aaron, undefined)
+  assert.equal(values[LEGACY_STORAGE_KEY], legacy)
+  assert.equal(buildRepositoryBanks(users, docs)[0].name, '牛')
+  assert.deepEqual(loadProfiles(storage({ 'interview-favorites': '["old-question"]' }), ids).favorites.default, ['old-question'])
+})
+
+test('current user and separate favorites survive reload; unavailable storage does not block banks', () => {
+  const preferences = { activeUserId: 'aaron', favorites: { default: [], aaron: ['same'] } }
+  assert.deepEqual(loadProfiles(storage({ [PROFILE_STORAGE_KEY]: JSON.stringify(preferences) }), ids), preferences)
+  for (const bad of ['{broken', 'null', '{"favorites":[]}']) {
+    assert.equal(loadProfiles(storage({ [PROFILE_STORAGE_KEY]: bad }), ids).activeUserId, 'default')
+  }
+  assert.equal(loadProfiles({ getItem() { throw new Error('blocked') } }, ids).activeUserId, 'default')
+  assert.equal(loadProfiles(storage({ [PROFILE_STORAGE_KEY]: '{"activeUserId":"removed","favorites":{}}' }), ids).activeUserId, 'default')
+})
+
+test('invalid Markdown is rejected and Windows line endings are supported', () => {
+  assert.throws(() => buildQuestionBank([], [{ name: 'invalid.md', raw: '# missing metadata' }]), /需要/)
   const crlf = document('windows')
   crlf.raw = '\uFEFF' + crlf.raw.replaceAll('\n', '\r\n')
   assert.equal(buildQuestionBank([], [crlf])[0].id, 'windows')
 })
 
-test('damaged profile store is rejected; unknown active user falls back safely', () => {
-  assert.throws(() => loadProfiles(storage({ [PROFILE_STORAGE_KEY]: '{broken' })))
-  assert.throws(() => loadProfiles(storage({ [PROFILE_STORAGE_KEY]: '{"users":[]}' })))
-  const store = loadProfiles(storage({ 'interview-favorites': '{broken' }))
-  store.activeUserId = 'missing'
-  assert.equal(loadProfiles(storage({ [PROFILE_STORAGE_KEY]: JSON.stringify(store) })).activeUserId, 'default')
+test('migration writes original Markdown to the chosen bank and refuses repeat imports', () => {
+  const directory = mkdtempSync(join(tmpdir(), 'copilot-migration-'))
+  try {
+    writeFileSync(join(directory, 'users.json'), JSON.stringify(users))
+    const backup = { users: [{ id: 'legacy-id', documents: [document('first'), document('second')] }] }
+    assert.equal(importLocalBank(directory, backup, 'legacy-id', 'aaron'), 2)
+    const files = readdirSync(join(directory, 'aaron/imported'))
+    assert.equal(files.length, 2)
+    const contents = files.map((file) => readFileSync(join(directory, 'aaron/imported', file), 'utf8')).sort()
+    assert.deepEqual(contents, backup.users[0].documents.map((doc) => doc.raw).sort())
+    assert.throws(() => importLocalBank(directory, backup, 'legacy-id', 'aaron'), /已存在/)
+    assert.throws(() => importLocalBank(directory, backup, 'legacy-id', '../outside'), /不存在/)
+    assert.deepEqual(files, readdirSync(join(directory, 'aaron/imported')))
+  } finally { rmSync(directory, { recursive: true, force: true }) }
 })

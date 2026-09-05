@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { questions as defaultQuestions } from './content'
-import { buildQuestionBank, getCategories, searchQuestions } from './question-bank'
-import { createProfile, DEFAULT_USER_ID, loadProfiles, PROFILE_STORAGE_KEY } from './profiles'
-import type { ProfileStore, UserProfile } from './profiles'
+import { repositoryUsers } from './content'
+import { getCategories, searchQuestions } from './question-bank'
+import type { RepositoryUser } from './question-bank'
+import { LEGACY_STORAGE_KEY, loadProfiles, PROFILE_STORAGE_KEY } from './profiles'
+import type { ProfileStore } from './profiles'
 import type { InterviewQuestion } from './types'
 
 // 旧格式（30 秒/标准/深入）通过 AnswerPanel 里的回退映射到新结构。
@@ -22,69 +23,59 @@ function renderText(text = '') {
 }
 
 function App() {
-  const [initial] = useState(() => {
-    try {
-      const store = loadProfiles(localStorage)
-      store.users.forEach((user) => buildQuestionBank(user.id === DEFAULT_USER_ID ? defaultQuestions : [], user.documents))
-      return { store, error: '' }
-    } catch {
-      return { store: null, error: '无法读取本地用户数据。请检查浏览器存储设置或备份数据后重试，现有数据未被覆盖。' }
-    }
+  const [store, setStore] = useState(() => {
+    try { return loadProfiles(localStorage, repositoryUsers.map((user) => user.id)) }
+    catch { return { activeUserId: repositoryUsers[0].id, favorites: {} } as ProfileStore }
   })
-  const [store, setStore] = useState(initial.store)
-  const [error, setError] = useState(initial.error)
-  if (!store) return <div className="storage-error" role="alert">{error}</div>
-  const user = store.users.find((item) => item.id === store.activeUserId)!
+  const [legacyBackup] = useState(() => {
+    try { return localStorage.getItem(LEGACY_STORAGE_KEY) || '' }
+    catch { return '' }
+  })
+  const [error, setError] = useState('')
+  const user = repositoryUsers.find((item) => item.id === store.activeUserId) || repositoryUsers[0]
   function save(next: ProfileStore) {
+    setStore(next)
     try {
       localStorage.setItem(PROFILE_STORAGE_KEY, JSON.stringify(next))
-      setStore(next)
       setError('')
-      return true
     } catch {
-      setError('保存失败：浏览器存储不可用或空间不足，本次修改未保存。')
-      return false
+      setError('本次选择或收藏仅在当前页面有效：浏览器存储不可用。已发布题库仍可正常浏览。')
     }
+  }
+  function exportLegacy() {
+    const url = URL.createObjectURL(new Blob([legacyBackup], { type: 'application/json' }))
+    const link = document.createElement('a')
+    link.href = url
+    link.download = 'interview-local-backup.json'
+    link.click()
+    setTimeout(() => URL.revokeObjectURL(url), 1000)
   }
   return <>
     {error && <div className="storage-error" role="alert">{error}</div>}
-    <UserWorkspace key={user.id} user={user} users={store.users}
+    {legacyBackup && <div className="legacy-notice">
+      <span>检测到旧版本地数据，尚未自动加入仓库。请导出备份后按 README 迁移题目；原数据仍保留在此浏览器。</span>
+      <button onClick={exportLegacy}>导出旧数据</button>
+    </div>}
+    <UserWorkspace key={user.id} user={user} favorites={Array.isArray(store.favorites[user.id]) ? store.favorites[user.id] : []}
       switchUser={(id) => save({ ...store, activeUserId: id })}
-      addUser={(name) => {
-        const created = createProfile(store.users, name)
-        return save({ users: [...store.users, created], activeUserId: created.id })
-      }}
-      updateUser={(update) => save({ ...store, users: store.users.map((item) => item.id === user.id ? update(item) : item) })}
+      updateFavorites={(favorites) => save({ ...store, favorites: { ...store.favorites, [user.id]: favorites } })}
     />
   </>
 }
 
-function UserWorkspace({ user, users, switchUser, addUser, updateUser }: {
-  user: UserProfile
-  users: UserProfile[]
-  switchUser: (id: string) => boolean
-  addUser: (name: string) => boolean
-  updateUser: (update: (user: UserProfile) => UserProfile) => boolean
+function UserWorkspace({ user, favorites, switchUser, updateFavorites }: {
+  user: RepositoryUser
+  favorites: string[]
+  switchUser: (id: string) => void
+  updateFavorites: (favorites: string[]) => void
 }) {
-  const questions = useMemo(() => buildQuestionBank(user.id === DEFAULT_USER_ID ? defaultQuestions : [], user.documents), [user.id, user.documents])
+  const questions = user.questions
   const categories = useMemo(() => getCategories(questions), [questions])
-  const favorites = user.favorites
   const [menuOpen, setMenuOpen] = useState(false)
-  const [newName, setNewName] = useState('')
-  const [profileError, setProfileError] = useState('')
-  const [importMessage, setImportMessage] = useState('')
-  const [importing, setImporting] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
   const avatarRef = useRef<HTMLButtonElement>(null)
-  const fileRef = useRef<HTMLInputElement>(null)
   const agentRequest = useRef<AbortController | null>(null)
-  const latestUpdateUser = useRef(updateUser)
-  latestUpdateUser.current = updateUser
-  const mounted = useRef(true)
-  useEffect(() => {
-    mounted.current = true
-    return () => { mounted.current = false; agentRequest.current?.abort() }
-  }, [])
+  useEffect(() => () => agentRequest.current?.abort(), [])
   useEffect(() => {
     if (!menuOpen) return
     menuRef.current?.querySelector<HTMLButtonElement>('.user-option')?.focus()
@@ -101,26 +92,6 @@ function UserWorkspace({ user, users, switchUser, addUser, updateUser }: {
       document.removeEventListener('keydown', closeOnEscape)
     }
   }, [menuOpen])
-
-  async function importQuestions(files: File[]) {
-    if (!files.length) return
-    setImporting(true)
-    setImportMessage('')
-    try {
-      if (files.some((file) => !file.name.toLowerCase().endsWith('.md'))) throw new Error('请选择 Markdown（.md）文件')
-      if (files.reduce((total, file) => total + file.size, 0) > 2 * 1024 * 1024) throw new Error('每批导入请控制在 2 MB 以内')
-      const documents = await Promise.all(files.map(async (file) => ({ name: file.name, raw: await file.text() })))
-      if (!mounted.current) return
-      buildQuestionBank(questions, documents)
-      if (latestUpdateUser.current((current) => ({ ...current, documents: [...current.documents, ...documents] }))) {
-        setImportMessage(`已为 ${user.name} 导入 ${documents.length} 道题`)
-      }
-    } catch (error) {
-      if (mounted.current) setImportMessage(error instanceof Error ? error.message : '导入失败')
-    } finally {
-      if (mounted.current) setImporting(false)
-    }
-  }
 
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState('all')
@@ -152,7 +123,7 @@ function UserWorkspace({ user, users, switchUser, addUser, updateUser }: {
 
   function toggleFavorite(id: string) {
     const next = favorites.includes(id) ? favorites.filter((item) => item !== id) : [...favorites, id]
-    updateUser((current) => ({ ...current, favorites: next }))
+    updateFavorites(next)
   }
 
   async function askAgent() {
@@ -219,27 +190,16 @@ function UserWorkspace({ user, users, switchUser, addUser, updateUser }: {
               aria-label={`切换用户，当前：${user.name}`} aria-expanded={menuOpen} aria-controls="user-menu"
               onClick={() => setMenuOpen(!menuOpen)}>{Array.from(user.name)[0]}</button>
             {menuOpen && <div className="user-menu" id="user-menu" aria-label="用户切换">
-              <p className="user-menu-title">切换用户<span>题库与收藏独立保存</span></p>
+              <p className="user-menu-title">切换用户<span>题库随网站发布 · 收藏仅限本机</span></p>
               <div className="user-options">
-                {users.map((item) => <button className={`user-option ${item.id === user.id ? 'active' : ''}`} key={item.id}
-                  aria-pressed={item.id === user.id} onClick={() => { if (switchUser(item.id)) setMenuOpen(false) }}>
+                {repositoryUsers.map((item) => <button className={`user-option ${item.id === user.id ? 'active' : ''}`} key={item.id}
+                  aria-pressed={item.id === user.id} onClick={() => { switchUser(item.id); setMenuOpen(false) }}>
                   <span className="user-initial">{Array.from(item.name)[0]}</span>
-                  <span className="user-detail"><strong>{item.name}</strong><small>{(item.id === DEFAULT_USER_ID ? defaultQuestions.length : 0) + item.documents.length} 道题</small></span>
+                  <span className="user-detail"><strong>{item.name}</strong><small>{item.questions.length} 道题</small></span>
                   {item.id === user.id && <span className="user-check">✓</span>}
                 </button>)}
               </div>
-              <form className="create-user" onSubmit={(event) => {
-                event.preventDefault()
-                try { if (addUser(newName)) setMenuOpen(false) }
-                catch (error) { setProfileError(error instanceof Error ? error.message : '创建失败') }
-              }}>
-                <label htmlFor="new-user-name">新建用户</label>
-                <div><input id="new-user-name" value={newName} maxLength={20} placeholder="输入用户名"
-                  onChange={(event) => { setNewName(event.target.value); setProfileError('') }} />
-                  <button type="submit" disabled={!newName.trim()}>创建</button></div>
-                {profileError && <p role="alert">{profileError}</p>}
-                <small>新用户从空题库开始，可导入自己的题目。</small>
-              </form>
+              <p className="repository-note">用户和题库由仓库统一维护，发布后在各浏览器中可见。</p>
             </div>}
           </div>
         </header>
@@ -257,22 +217,17 @@ function UserWorkspace({ user, users, switchUser, addUser, updateUser }: {
           <kbd>⌘ K</kbd>
         </div>
 
+        <p className="bank-origin">已发布题库 · 各浏览器均可访问</p>
         <div className="result-heading">
           <span>{query ? `找到 ${results.length} 个相关回答` : `${user.name} 的题库 · 优先复习`}</span>
-          <button className="import-button" disabled={importing} onClick={() => fileRef.current?.click()}>{importing ? '导入中…' : '导入题目'}</button>
-          <input ref={fileRef} type="file" hidden multiple accept=".md" aria-label="导入 Markdown 题目"
-            onChange={(event) => { void importQuestions(Array.from(event.target.files || [])); event.target.value = '' }} />
           {query && <small>按匹配程度排序</small>}
         </div>
 
-        {importMessage && <p className="import-message" role="status">{importMessage}</p>}
         <div className="question-list">
           {!questions.length && <div className="empty-bank">
             <span className="empty-bank-mark">题</span>
             <h2>{user.name} 的题库，等你填满</h2>
-            <p>导入自己的 Markdown 题目，即可开始检索和复习。<br />每道题需包含 id、title 和答案正文。</p>
-            <button disabled={importing} onClick={() => fileRef.current?.click()}>导入 Markdown 题目</button>
-            <small>仅保存在当前浏览器，请保留原始文件。</small>
+            <p>这位用户还没有发布题目。<br />维护者添加题目并更新网站后，即可在这里复习。</p>
           </div>}
           {!!questions.length && !query && !results.length && <p className="import-message">当前分类暂无题目。</p>}
           {results.map(({ question, score }) => (

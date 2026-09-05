@@ -1,5 +1,30 @@
 import type { InterviewQuestion, SearchResult } from './types'
 
+export interface RepositoryUser {
+  id: string
+  name: string
+  questions: InterviewQuestion[]
+}
+
+export function buildRepositoryBanks(users: { id: string; name: string }[], documents: { name: string; raw: string }[]): RepositoryUser[] {
+  if (!Array.isArray(users) || !users.length || users.some((user) => !user ||
+    typeof user.id !== 'string' || !/^[a-z0-9][a-z0-9_-]*$/.test(user.id) ||
+    typeof user.name !== 'string' || !user.name.trim()) ||
+    new Set(users.map((user) => user.id)).size !== users.length) {
+    throw new Error('content/users.json 需要唯一的用户 ID 和非空名称；ID 仅支持小写字母、数字、连字符和下划线')
+  }
+  const grouped = new Map(users.map((user) => [user.id, [] as typeof documents]))
+  for (const document of documents) {
+    const parts = document.name.split('/')
+    const bank = grouped.get(parts[0])
+    if (!bank || parts.length < 2 || parts.some((part) => !part || part === '.' || part === '..')) {
+      throw new Error(`${document.name}：题目必须放在 content/<已配置的用户 ID>/ 目录中`)
+    }
+    bank.push(document)
+  }
+  return users.map((user) => ({ ...user, questions: buildQuestionBank([], grouped.get(user.id)!) }))
+}
+
 export function buildQuestionBank(base: InterviewQuestion[], documents: { name: string; raw: string }[]) {
   const bank = new Map(base.map((question) => [question.id, question]))
   for (const document of documents) {
