@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-044-homepage
-title: 首页有哪些性能优化空间？
+title: 追问：首页有哪些性能优化空间？
 aliases: [能具体解释一下首页有哪些性能优化空间吗？, 从设计取舍看，首页有哪些性能优化空间？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [首页数据, 性能优化, 验证方法, 路由懒加载]
 ---
 
-# 首页有哪些性能优化空间？
+# 追问：首页有哪些性能优化空间？
 
 ## 核心回答
 

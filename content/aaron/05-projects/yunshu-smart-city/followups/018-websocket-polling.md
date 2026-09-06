@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-018-websocket-polling
-title: 为什么 5 分钟轮询，不用 WebSocket？手动刷新和定时刷新撞上怎么办？
+title: 追问：为什么 5 分钟轮询，不用 WebSocket？手动刷新和定时刷新撞上怎么办？
 aliases: [能具体解释一下为什么 5 分钟轮询，不用 WebSocket？手动刷新和定时刷新撞上怎么办吗？, 从设计取舍看，为什么 5 分钟轮询，不用 WebSocket？手动刷新和定时刷新撞上怎么办？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [WebSocket, 定时轮询, 首页数据, SSE, 请求取消]
 ---
 
-# 为什么 5 分钟轮询，不用 WebSocket？手动刷新和定时刷新撞上怎么办？
+# 追问：为什么 5 分钟轮询，不用 WebSocket？手动刷新和定时刷新撞上怎么办？
 
 ## 核心回答
 

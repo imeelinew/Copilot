@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-035-vue-version
-title: `main.js` 同时有 Vue 2 和 Vue 3 代码，项目到底用哪个？
+title: 追问：`main.js` 同时有 Vue 2 和 Vue 3 代码，项目到底用哪个？
 aliases: [能具体解释一下`main.js` 同时有 Vue 2 和 Vue 3 代码，项目到底用哪个吗？, 从设计取舍看，`main.js` 同时有 Vue 2 和 Vue 3 代码，项目到底用哪个？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [Vue 3, Vue 2, 验证方法, uni-app]
 ---
 
-# `main.js` 同时有 Vue 2 和 Vue 3 代码，项目到底用哪个？
+# 追问：`main.js` 同时有 Vue 2 和 Vue 3 代码，项目到底用哪个？
 
 ## 核心回答
 

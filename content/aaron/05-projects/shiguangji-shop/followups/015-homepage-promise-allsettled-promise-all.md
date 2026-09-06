@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-015-homepage-promise-allsettled-promise-all
-title: 首页为什么用 Promise.allSettled，不用 Promise.all 或三个 await？
+title: 追问：首页为什么用 Promise.allSettled，不用 Promise.all 或三个 await？
 aliases: [能具体解释一下首页为什么用 Promise.allSettled，不用 Promise.all 或三个 await吗？, 从设计取舍看，首页为什么用 Promise.allSettled，不用 Promise.all 或三个 await？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [首页数据, Promise.allSettled, Promise.all, 加载状态]
 ---
 
-# 首页为什么用 Promise.allSettled，不用 Promise.all 或三个 await？
+# 追问：首页为什么用 Promise.allSettled，不用 Promise.all 或三个 await？
 
 ## 核心回答
 

@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-030-want-to-watch
-title: “想看”按钮为什么没有真正交互？
+title: 追问：“想看”按钮为什么没有真正交互？
 aliases: [能具体解释一下“想看”按钮为什么没有真正交互吗？, 从设计取舍看，“想看”按钮为什么没有真正交互？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [uni-app, 影视小程序, Vue 2]
 ---
 
-# “想看”按钮为什么没有真正交互？
+# 追问：“想看”按钮为什么没有真正交互？
 
 ## 核心回答
 

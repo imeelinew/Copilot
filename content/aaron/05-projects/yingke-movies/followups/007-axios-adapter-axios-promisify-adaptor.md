@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-007-axios-adapter-axios-promisify-adaptor
-title: `uni.promisify.adaptor.js` 和 Axios adapter 是一回事吗？
+title: 追问：`uni.promisify.adaptor.js` 和 Axios adapter 是一回事吗？
 aliases: [能具体解释一下`uni.promisify.adaptor.js` 和 Axios adapter 是一回事吗吗？, 从设计取舍看，`uni.promisify.adaptor.js` 和 Axios adapter 是一回事吗？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [Axios, 请求适配器, uni.request, uni-app]
 ---
 
-# `uni.promisify.adaptor.js` 和 Axios adapter 是一回事吗？
+# 追问：`uni.promisify.adaptor.js` 和 Axios adapter 是一回事吗？
 
 ## 核心回答
 

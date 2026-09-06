@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-017-homepage-promise-allsettled-promise-all
-title: 首页为什么用 Promise.all，地图为什么用 allSettled？一个请求失败会怎样？
+title: 追问：首页为什么用 Promise.all，地图为什么用 allSettled？一个请求失败会怎样？
 aliases: [能具体解释一下首页为什么用 Promise.all，地图为什么用 allSettled？一个请求失败会怎样吗？, 从设计取舍看，首页为什么用 Promise.all，地图为什么用 allSettled？一个请求失败会怎样？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [首页数据, Promise.allSettled, Promise.all, 高德地图, 请求封装]
 ---
 
-# 首页为什么用 Promise.all，地图为什么用 allSettled？一个请求失败会怎样？
+# 追问：首页为什么用 Promise.all，地图为什么用 allSettled？一个请求失败会怎样？
 
 ## 核心回答
 

@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-011-settled-result
-title: 【高频】为什么组件接收的是 `main.value`，而不是直接接收分类数据？
+title: 追问：【高频】为什么组件接收的是 `main.value`，而不是直接接收分类数据？
 aliases: [能具体解释一下为什么组件接收的是 `main.value`，而不是直接接收分类数据吗？, 从设计取舍看，为什么组件接收的是 `main.value`，而不是直接接收分类数据？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [组件设计, Promise.allSettled, Promise.all, 自动化测试]
 ---
 
-# 【高频】为什么组件接收的是 `main.value`，而不是直接接收分类数据？
+# 追问：【高频】为什么组件接收的是 `main.value`，而不是直接接收分类数据？
 
 ## 核心回答
 

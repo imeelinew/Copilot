@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-024-typescript-validation
-title: 项目使用了 TypeScript，为什么还有 any？写了类型就能保证接口数据正确吗？
+title: 追问：项目使用了 TypeScript，为什么还有 any？写了类型就能保证接口数据正确吗？
 aliases: [能具体解释一下项目使用了 TypeScript，为什么还有 any？写了类型就能保证接口数据正确吗吗？, 从设计取舍看，项目使用了 TypeScript，为什么还有 any？写了类型就能保证接口数据正确吗？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [TypeScript, 请求封装, 首页数据, 商品详情, 订单流程, 验证方法]
 ---
 
-# 项目使用了 TypeScript，为什么还有 any？写了类型就能保证接口数据正确吗？
+# 追问：项目使用了 TypeScript，为什么还有 any？写了类型就能保证接口数据正确吗？
 
 ## 核心回答
 

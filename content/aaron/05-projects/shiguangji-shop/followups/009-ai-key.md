@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-009-ai-key
-title: AI Key 藏到服务端以后就安全了吗？别人直接请求 /api/ai 怎么办？
+title: 追问：AI Key 藏到服务端以后就安全了吗？别人直接请求 /api/ai 怎么办？
 aliases: [能具体解释一下AI Key 藏到服务端以后就安全了吗？别人直接请求 /api/ai 怎么办吗？, 从设计取舍看，AI Key 藏到服务端以后就安全了吗？别人直接请求 /api/ai 怎么办？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [AI Key, 列表 Key, 登录鉴权, 验证方法, Token, HTTPS]
 ---
 
-# AI Key 藏到服务端以后就安全了吗？别人直接请求 /api/ai 怎么办？
+# 追问：AI Key 藏到服务端以后就安全了吗？别人直接请求 /api/ai 怎么办？
 
 ## 核心回答
 

@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-008-page-unload
-title: 如果页面离开时请求还没有结束，怎么处理？
+title: 追问：如果页面离开时请求还没有结束，怎么处理？
 aliases: [能具体解释一下如果页面离开时请求还没有结束，怎么处理吗？, 从设计取舍看，如果页面离开时请求还没有结束，怎么处理？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [uni.request, 请求适配器, uni-app]
 ---
 
-# 如果页面离开时请求还没有结束，怎么处理？
+# 追问：如果页面离开时请求还没有结束，怎么处理？
 
 ## 核心回答
 

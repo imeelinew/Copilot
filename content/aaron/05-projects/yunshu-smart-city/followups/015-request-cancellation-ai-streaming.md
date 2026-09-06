@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-015-request-cancellation-ai-streaming
-title: 用户连续发送两条消息，或者离开页面，流式请求怎么办？
+title: 追问：用户连续发送两条消息，或者离开页面，流式请求怎么办？
 aliases: [能具体解释一下用户连续发送两条消息，或者离开页面，流式请求怎么办吗？, 从设计取舍看，用户连续发送两条消息，或者离开页面，流式请求怎么办？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [请求取消, React, 智慧城市]
 ---
 
-# 用户连续发送两条消息，或者离开页面，流式请求怎么办？
+# 追问：用户连续发送两条消息，或者离开页面，流式请求怎么办？
 
 ## 核心回答
 

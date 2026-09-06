@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-025-typescript-validation
-title: 用了 TypeScript，为什么还要校验接口数据？as 类型不是已经转换了吗？
+title: 追问：用了 TypeScript，为什么还要校验接口数据？as 类型不是已经转换了吗？
 aliases: [能具体解释一下用了 TypeScript，为什么还要校验接口数据？as 类型不是已经转换了吗吗？, 从设计取舍看，用了 TypeScript，为什么还要校验接口数据？as 类型不是已经转换了吗？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [TypeScript, 首页数据, 验证方法, Token, 高德地图, 错误分层]
 ---
 
-# 用了 TypeScript，为什么还要校验接口数据？as 类型不是已经转换了吗？
+# 追问：用了 TypeScript，为什么还要校验接口数据？as 类型不是已经转换了吗？
 
 ## 核心回答
 

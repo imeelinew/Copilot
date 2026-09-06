@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-004-interceptors
-title: 【高频】请求拦截器和响应拦截器分别做了什么？
+title: 追问：【高频】请求拦截器和响应拦截器分别做了什么？
 aliases: [能具体解释一下请求拦截器和响应拦截器分别做了什么吗？, 从设计取舍看，请求拦截器和响应拦截器分别做了什么？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [Token, uni-app, 影视小程序]
 ---
 
-# 【高频】请求拦截器和响应拦截器分别做了什么？
+# 追问：【高频】请求拦截器和响应拦截器分别做了什么？
 
 ## 核心回答
 

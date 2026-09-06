@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-032-vant-weapp
-title: Vant 目录中的代码是你自己写的吗？
+title: 追问：Vant 目录中的代码是你自己写的吗？
 aliases: [能具体解释一下Vant 目录中的代码是你自己写的吗吗？, 从设计取舍看，Vant 目录中的代码是你自己写的吗？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [Vant Weapp, 组件设计, 骨架屏, 分页, 加载状态]
 ---
 
-# Vant 目录中的代码是你自己写的吗？
+# 追问：Vant 目录中的代码是你自己写的吗？
 
 ## 核心回答
 

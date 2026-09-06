@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-023-order-confirmation-localstorage-sessionstorage
-title: 确认订单为什么使用 sessionStorage，不用 localStorage 或 Pinia？刷新和换账号怎么办？
+title: 追问：确认订单为什么使用 sessionStorage，不用 localStorage 或 Pinia？刷新和换账号怎么办？
 aliases: [能具体解释一下确认订单为什么使用 sessionStorage，不用 localStorage 或 Pinia？刷新和换账号怎么办吗？, 从设计取舍看，确认订单为什么使用 sessionStorage，不用 localStorage 或 Pinia？刷新和换账号怎么办？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [订单流程, localStorage, sessionStorage, 登录鉴权, 地址管理, 组件设计]
 ---
 
-# 确认订单为什么使用 sessionStorage，不用 localStorage 或 Pinia？刷新和换账号怎么办？
+# 追问：确认订单为什么使用 sessionStorage，不用 localStorage 或 Pinia？刷新和换账号怎么办？
 
 ## 核心回答
 

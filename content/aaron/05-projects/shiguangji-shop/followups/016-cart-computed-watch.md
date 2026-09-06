@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-016-cart-computed-watch
-title: 购物车全选、店铺全选和半选，为什么不用几个独立布尔值？computed 和 watch 分别做什么？
+title: 追问：购物车全选、店铺全选和半选，为什么不用几个独立布尔值？computed 和 watch 分别做什么？
 aliases: [能具体解释一下购物车全选、店铺全选和半选，为什么不用几个独立布尔值？computed 和 watch 分别做什么吗？, 从设计取舍看，购物车全选、店铺全选和半选，为什么不用几个独立布尔值？computed 和 watch 分别做什么？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [购物车, 服务端计价, Vue 3]
 ---
 
-# 购物车全选、店铺全选和半选，为什么不用几个独立布尔值？computed 和 watch 分别做什么？
+# 追问：购物车全选、店铺全选和半选，为什么不用几个独立布尔值？computed 和 watch 分别做什么？
 
 ## 核心回答
 

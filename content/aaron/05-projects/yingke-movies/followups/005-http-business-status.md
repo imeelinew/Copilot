@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-005-http-business-status
-title: HTTP 404、500 会进入响应错误拦截器吗？
+title: 追问：HTTP 404、500 会进入响应错误拦截器吗？
 aliases: [能具体解释一下HTTP 404、500 会进入响应错误拦截器吗吗？, 从设计取舍看，HTTP 404、500 会进入响应错误拦截器吗？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [错误分层, 请求封装, uni.request, 请求适配器]
 ---
 
-# HTTP 404、500 会进入响应错误拦截器吗？
+# 追问：HTTP 404、500 会进入响应错误拦截器吗？
 
 ## 核心回答
 

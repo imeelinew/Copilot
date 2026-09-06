@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-019-list-key
-title: 【高频】为什么列表的 `key` 使用 `index`，不用影片 ID？
+title: 追问：【高频】为什么列表的 `key` 使用 `index`，不用影片 ID？
 aliases: [能具体解释一下为什么列表的 `key` 使用 `index`，不用影片 ID吗？, 从设计取舍看，为什么列表的 `key` 使用 `index`，不用影片 ID？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [列表 Key, 分页, uni-app]
 ---
 
-# 【高频】为什么列表的 `key` 使用 `index`，不用影片 ID？
+# 追问：【高频】为什么列表的 `key` 使用 `index`，不用影片 ID？
 
 ## 核心回答
 

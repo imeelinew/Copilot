@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-002-ai-key-localstorage-cookie
-title: AI Key 已经移到服务端，登录 Token 为什么还放在 localStorage？Cookie 会不会更好？
+title: 追问：AI Key 已经移到服务端，登录 Token 为什么还放在 localStorage？Cookie 会不会更好？
 aliases: [能具体解释一下AI Key 已经移到服务端，登录 Token 为什么还放在 localStorage？Cookie 会不会更好吗？, 从设计取舍看，AI Key 已经移到服务端，登录 Token 为什么还放在 localStorage？Cookie 会不会更好？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [登录鉴权, AI Key, localStorage, HttpOnly Cookie, Token, 列表 Key]
 ---
 
-# AI Key 已经移到服务端，登录 Token 为什么还放在 localStorage？Cookie 会不会更好？
+# 追问：AI Key 已经移到服务端，登录 Token 为什么还放在 localStorage？Cookie 会不会更好？
 
 ## 核心回答
 

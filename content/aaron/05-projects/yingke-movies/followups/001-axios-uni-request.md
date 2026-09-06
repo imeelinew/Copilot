@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-001-axios-uni-request
-title: 【高频】uni-app 已经有 `uni.request`，为什么还要使用 Axios？
+title: 追问：【高频】uni-app 已经有 `uni.request`，为什么还要使用 Axios？
 aliases: [能具体解释一下uni-app 已经有 `uni.request`，为什么还要使用 Axios吗？, 从设计取舍看，uni-app 已经有 `uni.request`，为什么还要使用 Axios？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [Axios, uni.request, uni-app, 首页数据, 请求适配器]
 ---
 
-# 【高频】uni-app 已经有 `uni.request`，为什么还要使用 Axios？
+# 追问：【高频】uni-app 已经有 `uni.request`，为什么还要使用 Axios？
 
 ## 核心回答
 

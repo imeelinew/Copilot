@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-024-csv-export
-title: CSV 为什么用 Blob 下载，不在前端拼字符串？返回 200 就说明导出成功吗？
+title: 追问：CSV 为什么用 Blob 下载，不在前端拼字符串？返回 200 就说明导出成功吗？
 aliases: [能具体解释一下CSV 为什么用 Blob 下载，不在前端拼字符串？返回 200 就说明导出成功吗吗？, 从设计取舍看，CSV 为什么用 Blob 下载，不在前端拼字符串？返回 200 就说明导出成功吗？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [CSV 导出, 分页, 错误分层]
 ---
 
-# CSV 为什么用 Blob 下载，不在前端拼字符串？返回 200 就说明导出成功吗？
+# 追问：CSV 为什么用 Blob 下载，不在前端拼字符串？返回 200 就说明导出成功吗？
 
 ## 核心回答
 

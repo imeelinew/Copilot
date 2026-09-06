@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-010-refresh-retry-axios
-title: 为什么只重试一次？刷新请求为什么不用普通 Axios 实例？POST 也能重试吗？
+title: 追问：为什么只重试一次？刷新请求为什么不用普通 Axios 实例？POST 也能重试吗？
 aliases: [能具体解释一下为什么只重试一次？刷新请求为什么不用普通 Axios 实例？POST 也能重试吗吗？, 从设计取舍看，为什么只重试一次？刷新请求为什么不用普通 Axios 实例？POST 也能重试吗？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [Axios, 登录鉴权, Token]
 ---
 
-# 为什么只重试一次？刷新请求为什么不用普通 Axios 实例？POST 也能重试吗？
+# 追问：为什么只重试一次？刷新请求为什么不用普通 Axios 实例？POST 也能重试吗？
 
 ## 核心回答
 

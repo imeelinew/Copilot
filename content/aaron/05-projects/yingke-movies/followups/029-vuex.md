@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-029-vuex
-title: 为什么没有使用 Vuex？
+title: 追问：为什么没有使用 Vuex？
 aliases: [能具体解释一下为什么没有使用 Vuex吗？, 从设计取舍看，为什么没有使用 Vuex？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [登录鉴权, 首页数据, 订单流程, 分页]
 ---
 
-# 为什么没有使用 Vuex？
+# 追问：为什么没有使用 Vuex？
 
 ## 核心回答
 

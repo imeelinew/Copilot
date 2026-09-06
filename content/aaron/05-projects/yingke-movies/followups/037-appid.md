@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-037-appid
-title: 项目里的 AppID 能放在前端吗？它是密钥吗？
+title: 追问：项目里的 AppID 能放在前端吗？它是密钥吗？
 aliases: [能具体解释一下项目里的 AppID 能放在前端吗？它是密钥吗吗？, 从设计取舍看，项目里的 AppID 能放在前端吗？它是密钥吗？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [小程序 AppID, 请求封装, uni-app]
 ---
 
-# 项目里的 AppID 能放在前端吗？它是密钥吗？
+# 追问：项目里的 AppID 能放在前端吗？它是密钥吗？
 
 ## 核心回答
 

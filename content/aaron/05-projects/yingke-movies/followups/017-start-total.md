@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-017-start-total
-title: 到底条件为什么不能只判断 `start < total`？
+title: 追问：到底条件为什么不能只判断 `start < total`？
 aliases: [能具体解释一下到底条件为什么不能只判断 `start < total`吗？, 从设计取舍看，到底条件为什么不能只判断 `start < total`？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [uni-app, 影视小程序, Vue 2]
 ---
 
-# 到底条件为什么不能只判断 `start < total`？
+# 追问：到底条件为什么不能只判断 `start < total`？
 
 ## 核心回答
 

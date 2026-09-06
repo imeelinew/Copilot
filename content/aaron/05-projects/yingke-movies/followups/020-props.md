@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-020-props
-title: 为什么 `props` 只使用数组写法？
+title: 追问：为什么 `props` 只使用数组写法？
 aliases: [能具体解释一下为什么 `props` 只使用数组写法吗？, 从设计取舍看，为什么 `props` 只使用数组写法？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [Props, 组件设计, uni-app]
 ---
 
-# 为什么 `props` 只使用数组写法？
+# 追问：为什么 `props` 只使用数组写法？
 
 ## 核心回答
 

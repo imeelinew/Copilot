@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-015-pagination
-title: 为什么用 `start/count`，不用 `page/pageSize`？
+title: 追问：为什么用 `start/count`，不用 `page/pageSize`？
 aliases: [能具体解释一下为什么用 `start/count`，不用 `page/pageSize`吗？, 从设计取舍看，为什么用 `start/count`，不用 `page/pageSize`？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [分页, 文本展开, uni-app]
 ---
 
-# 为什么用 `start/count`，不用 `page/pageSize`？
+# 追问：为什么用 `start/count`，不用 `page/pageSize`？
 
 ## 核心回答
 

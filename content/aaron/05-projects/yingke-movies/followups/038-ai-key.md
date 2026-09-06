@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-038-ai-key
-title: 如果以后接入 AI Key，应该存在哪里？
+title: 追问：如果以后接入 AI Key，应该存在哪里？
 aliases: [能具体解释一下如果以后接入 AI Key，应该存在哪里吗？, 从设计取舍看，如果以后接入 AI Key，应该存在哪里？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [AI Key, 列表 Key, 登录鉴权, localStorage]
 ---
 
-# 如果以后接入 AI Key，应该存在哪里？
+# 追问：如果以后接入 AI Key，应该存在哪里？
 
 ## 核心回答
 

@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-006-route-auth-token-logout
-title: 路由守卫判断有 Token 就放行，算完成鉴权了吗？退出登录做了什么？
+title: 追问：路由守卫判断有 Token 就放行，算完成鉴权了吗？退出登录做了什么？
 aliases: [能具体解释一下路由守卫判断有 Token 就放行，算完成鉴权了吗？退出登录做了什么吗？, 从设计取舍看，路由守卫判断有 Token 就放行，算完成鉴权了吗？退出登录做了什么？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [登录鉴权, Token, 订单流程, 验证方法, RBAC]
 ---
 
-# 路由守卫判断有 Token 就放行，算完成鉴权了吗？退出登录做了什么？
+# 追问：路由守卫判断有 Token 就放行，算完成鉴权了吗？退出登录做了什么？
 
 ## 核心回答
 

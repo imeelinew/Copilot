@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-005-ecb-cbc-gcm
-title: 为什么使用 ECB，不用 CBC 或 GCM？加上时间戳能防重放吗？
+title: 追问：为什么使用 ECB，不用 CBC 或 GCM？加上时间戳能防重放吗？
 aliases: [能具体解释一下为什么使用 ECB，不用 CBC 或 GCM？加上时间戳能防重放吗吗？, 从设计取舍看，为什么使用 ECB，不用 CBC 或 GCM？加上时间戳能防重放吗？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [Vue 3, 移动商城, 前端工程]
 ---
 
-# 为什么使用 ECB，不用 CBC 或 GCM？加上时间戳能防重放吗？
+# 追问：为什么使用 ECB，不用 CBC 或 GCM？加上时间戳能防重放吗？
 
 ## 核心回答
 

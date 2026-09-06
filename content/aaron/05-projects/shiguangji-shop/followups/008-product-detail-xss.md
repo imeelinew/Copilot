@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-008-product-detail-xss
-title: 商品详情用了 v-html，会有 XSS 吗？调整图片尺寸算不算过滤？
+title: 追问：商品详情用了 v-html，会有 XSS 吗？调整图片尺寸算不算过滤？
 aliases: [能具体解释一下商品详情用了 v-html，会有 XSS 吗？调整图片尺寸算不算过滤吗？, 从设计取舍看，商品详情用了 v-html，会有 XSS 吗？调整图片尺寸算不算过滤？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [商品详情, XSS, 地址管理, Token]
 ---
 
-# 商品详情用了 v-html，会有 XSS 吗？调整图片尺寸算不算过滤？
+# 追问：商品详情用了 v-html，会有 XSS 吗？调整图片尺寸算不算过滤？
 
 ## 核心回答
 

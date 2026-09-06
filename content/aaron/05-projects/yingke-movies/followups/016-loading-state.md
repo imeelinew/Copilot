@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-016-loading-state
-title: 【高频】为什么 loading 会立即消失？
+title: 追问：【高频】为什么 loading 会立即消失？
 aliases: [能具体解释一下为什么 loading 会立即消失吗？, 从设计取舍看，为什么 loading 会立即消失？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [加载状态, uni-app, 影视小程序]
 ---
 
-# 【高频】为什么 loading 会立即消失？
+# 追问：【高频】为什么 loading 会立即消失？
 
 ## 核心回答
 

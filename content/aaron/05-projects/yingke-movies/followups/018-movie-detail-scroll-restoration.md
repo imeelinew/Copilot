@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-018-movie-detail-scroll-restoration
-title: 从详情页返回后怎样保留原来的滚动位置和列表？
+title: 追问：从详情页返回后怎样保留原来的滚动位置和列表？
 aliases: [能具体解释一下从详情页返回后怎样保留原来的滚动位置和列表吗？, 从设计取舍看，从详情页返回后怎样保留原来的滚动位置和列表？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [影视详情, 分页, onShow]
 ---
 
-# 从详情页返回后怎样保留原来的滚动位置和列表？
+# 追问：从详情页返回后怎样保留原来的滚动位置和列表？
 
 ## 核心回答
 

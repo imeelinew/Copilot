@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-006-request-config
-title: 为什么 `baseURL` 和超时时间写在请求文件里？
+title: 追问：为什么 `baseURL` 和超时时间写在请求文件里？
 aliases: [能具体解释一下为什么 `baseURL` 和超时时间写在请求文件里吗？, 从设计取舍看，为什么 `baseURL` 和超时时间写在请求文件里？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [移动端适配, 地址管理, 自动化测试]
 ---
 
-# 为什么 `baseURL` 和超时时间写在请求文件里？
+# 追问：为什么 `baseURL` 和超时时间写在请求文件里？
 
 ## 核心回答
 

@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-014-sse-stream-decoding
-title: 一次 read() 就是一条 SSE 消息吗？为什么要用 TextDecoder 和缓冲区？
+title: 追问：一次 read() 就是一条 SSE 消息吗？为什么要用 TextDecoder 和缓冲区？
 aliases: [能具体解释一下一次 read() 就是一条 SSE 消息吗？为什么要用 TextDecoder 和缓冲区吗？, 从设计取舍看，一次 read() 就是一条 SSE 消息吗？为什么要用 TextDecoder 和缓冲区？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [SSE, 流式解析, React]
 ---
 
-# 一次 read() 就是一条 SSE 消息吗？为什么要用 TextDecoder 和缓冲区？
+# 追问：一次 read() 就是一条 SSE 消息吗？为什么要用 TextDecoder 和缓冲区？
 
 ## 核心回答
 

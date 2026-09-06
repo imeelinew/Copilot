@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-014-axios-fetch
-title: 商城使用 Axios，为什么 AI 使用 fetch？12 秒和 15 秒超时有什么区别？
+title: 追问：商城使用 Axios，为什么 AI 使用 fetch？12 秒和 15 秒超时有什么区别？
 aliases: [能具体解释一下商城使用 Axios，为什么 AI 使用 fetch？12 秒和 15 秒超时有什么区别吗？, 从设计取舍看，商城使用 Axios，为什么 AI 使用 fetch？12 秒和 15 秒超时有什么区别？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [Axios, Fetch, 地址管理, Token, 请求取消]
 ---
 
-# 商城使用 Axios，为什么 AI 使用 fetch？12 秒和 15 秒超时有什么区别？
+# 追问：商城使用 Axios，为什么 AI 使用 fetch？12 秒和 15 秒超时有什么区别？
 
 ## 核心回答
 

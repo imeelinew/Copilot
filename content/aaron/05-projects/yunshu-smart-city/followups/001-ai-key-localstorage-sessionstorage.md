@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-001-ai-key-localstorage-sessionstorage
-title: AI Key 为什么存在 localStorage？为什么不放 sessionStorage、内存、Cookie 或服务端？
+title: 追问：AI Key 为什么存在 localStorage？为什么不放 sessionStorage、内存、Cookie 或服务端？
 aliases: [能具体解释一下AI Key 为什么存在 localStorage？为什么不放 sessionStorage、内存、Cookie 或服务端吗？, 从设计取舍看，AI Key 为什么存在 localStorage？为什么不放 sessionStorage、内存、Cookie 或服务端？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [AI Key, localStorage, sessionStorage, HttpOnly Cookie, 列表 Key, XSS]
 ---
 
-# AI Key 为什么存在 localStorage？为什么不放 sessionStorage、内存、Cookie 或服务端？
+# 追问：AI Key 为什么存在 localStorage？为什么不放 sessionStorage、内存、Cookie 或服务端？
 
 ## 核心回答
 

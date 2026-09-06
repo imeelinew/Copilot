@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-026-description-toggle
-title: 为什么标题使用 CSS 省略，简介却使用 JavaScript 截断？
+title: 追问：为什么标题使用 CSS 省略，简介却使用 JavaScript 截断？
 aliases: [能具体解释一下为什么标题使用 CSS 省略，简介却使用 JavaScript 截断吗？, 从设计取舍看，为什么标题使用 CSS 省略，简介却使用 JavaScript 截断？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [文本展开, Props, uni-app]
 ---
 
-# 为什么标题使用 CSS 省略，简介却使用 JavaScript 截断？
+# 追问：为什么标题使用 CSS 省略，简介却使用 JavaScript 截断？
 
 ## 核心回答
 

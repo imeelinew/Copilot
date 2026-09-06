@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-033-vant-weapp
-title: 为什么全局注册 Vant 组件，不在每个页面单独注册？
+title: 追问：为什么全局注册 Vant 组件，不在每个页面单独注册？
 aliases: [能具体解释一下为什么全局注册 Vant 组件，不在每个页面单独注册吗？, 从设计取舍看，为什么全局注册 Vant 组件，不在每个页面单独注册？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [组件设计, Vant Weapp, 首页数据]
 ---
 
-# 为什么全局注册 Vant 组件，不在每个页面单独注册？
+# 追问：为什么全局注册 Vant 组件，不在每个页面单独注册？
 
 ## 核心回答
 

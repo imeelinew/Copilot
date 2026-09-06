@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-004-localstorage-token
-title: Token 为什么放 Redux，又为什么用 redux-persist？只用 localStorage 不行吗？
+title: 追问：Token 为什么放 Redux，又为什么用 redux-persist？只用 localStorage 不行吗？
 aliases: [能具体解释一下Token 为什么放 Redux，又为什么用 redux-persist？只用 localStorage 不行吗吗？, 从设计取舍看，Token 为什么放 Redux，又为什么用 redux-persist？只用 localStorage 不行吗？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [localStorage, Token, Redux, 登录鉴权, 组件设计, HttpOnly Cookie]
 ---
 
-# Token 为什么放 Redux，又为什么用 redux-persist？只用 localStorage 不行吗？
+# 追问：Token 为什么放 Redux，又为什么用 redux-persist？只用 localStorage 不行吗？
 
 ## 核心回答
 

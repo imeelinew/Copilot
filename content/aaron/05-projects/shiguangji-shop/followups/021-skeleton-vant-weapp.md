@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-021-skeleton-vant-weapp
-title: Vant 已经有 Skeleton，为什么还要封装 SkeletonList？骨架屏提升了什么？
+title: 追问：Vant 已经有 Skeleton，为什么还要封装 SkeletonList？骨架屏提升了什么？
 aliases: [能具体解释一下Vant 已经有 Skeleton，为什么还要封装 SkeletonList？骨架屏提升了什么吗？, 从设计取舍看，Vant 已经有 Skeleton，为什么还要封装 SkeletonList？骨架屏提升了什么？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [骨架屏, Vant Weapp, 首页数据, 地址管理, 订单流程, 组件设计]
 ---
 
-# Vant 已经有 Skeleton，为什么还要封装 SkeletonList？骨架屏提升了什么？
+# 追问：Vant 已经有 Skeleton，为什么还要封装 SkeletonList？骨架屏提升了什么？
 
 ## 核心回答
 

@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-003-aes-hashing-password
-title: 密码用了什么加密？为什么不用 AES、MD5 或 SHA-256？
+title: 追问：密码用了什么加密？为什么不用 AES、MD5 或 SHA-256？
 aliases: [能具体解释一下密码用了什么加密？为什么不用 AES、MD5 或 SHA-256吗？, 从设计取舍看，密码用了什么加密？为什么不用 AES、MD5 或 SHA-256？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [AES, 密码哈希, 登录鉴权, HTTPS]
 ---
 
-# 密码用了什么加密？为什么不用 AES、MD5 或 SHA-256？
+# 追问：密码用了什么加密？为什么不用 AES、MD5 或 SHA-256？
 
 ## 核心回答
 

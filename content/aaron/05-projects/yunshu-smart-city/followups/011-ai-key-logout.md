@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-011-ai-key-logout
-title: 退出登录清掉了什么？另一个标签页和 AI Key 会一起清掉吗？
+title: 追问：退出登录清掉了什么？另一个标签页和 AI Key 会一起清掉吗？
 aliases: [能具体解释一下退出登录清掉了什么？另一个标签页和 AI Key 会一起清掉吗吗？, 从设计取舍看，退出登录清掉了什么？另一个标签页和 AI Key 会一起清掉吗？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [登录鉴权, AI Key, 列表 Key, localStorage, Token, Redux]
 ---
 
-# 退出登录清掉了什么？另一个标签页和 AI Key 会一起清掉吗？
+# 追问：退出登录清掉了什么？另一个标签页和 AI Key 会一起清掉吗？
 
 ## 核心回答
 

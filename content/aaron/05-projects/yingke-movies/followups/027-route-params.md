@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-027-route-params
-title: 为什么通过 URL 参数传分类 ID 和影片 ID？
+title: 追问：为什么通过 URL 参数传分类 ID 和影片 ID？
 aliases: [能具体解释一下为什么通过 URL 参数传分类 ID 和影片 ID吗？, 从设计取舍看，为什么通过 URL 参数传分类 ID 和影片 ID？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [首页数据, 影视详情, 页面导航]
 ---
 
-# 为什么通过 URL 参数传分类 ID 和影片 ID？
+# 追问：为什么通过 URL 参数传分类 ID 和影片 ID？
 
 ## 核心回答
 

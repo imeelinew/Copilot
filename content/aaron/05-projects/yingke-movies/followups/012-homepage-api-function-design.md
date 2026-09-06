@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-012-homepage-api-function-design
-title: 首页为什么拆成三个请求函数，不直接写一个循环？
+title: 追问：首页为什么拆成三个请求函数，不直接写一个循环？
 aliases: [能具体解释一下首页为什么拆成三个请求函数，不直接写一个循环吗？, 从设计取舍看，首页为什么拆成三个请求函数，不直接写一个循环？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [首页数据, uni-app, 影视小程序]
 ---
 
-# 首页为什么拆成三个请求函数，不直接写一个循环？
+# 追问：首页为什么拆成三个请求函数，不直接写一个循环？
 
 ## 核心回答
 

@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-042-request-layer
-title: 怎样验证请求封装？
+title: 追问：怎样验证请求封装？
 aliases: [能具体解释一下怎样验证请求封装吗？, 从设计取舍看，怎样验证请求封装？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [请求封装, 验证方法, 分页, 自动化测试, 错误分层]
 ---
 
-# 怎样验证请求封装？
+# 追问：怎样验证请求封装？
 
 ## 核心回答
 

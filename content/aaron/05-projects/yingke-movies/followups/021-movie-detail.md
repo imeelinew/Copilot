@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-021-movie-detail
-title: 【高频】详情数据没回来时，`movieDetail.pic.large` 会发生什么？
+title: 追问：【高频】详情数据没回来时，`movieDetail.pic.large` 会发生什么？
 aliases: [能具体解释一下详情数据没回来时，`movieDetail.pic.large` 会发生什么吗？, 从设计取舍看，详情数据没回来时，`movieDetail.pic.large` 会发生什么？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [影视详情, 加载状态, uni-app]
 ---
 
-# 【高频】详情数据没回来时，`movieDetail.pic.large` 会发生什么？
+# 追问：【高频】详情数据没回来时，`movieDetail.pic.large` 会发生什么？
 
 ## 核心回答
 

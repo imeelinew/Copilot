@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-002-ai-key-aes
-title: 把 Key 用 AES 加密后再存，或者放到 Vite 环境变量，就安全了吗？
+title: 追问：把 Key 用 AES 加密后再存，或者放到 Vite 环境变量，就安全了吗？
 aliases: [能具体解释一下把 Key 用 AES 加密后再存，或者放到 Vite 环境变量，就安全了吗吗？, 从设计取舍看，把 Key 用 AES 加密后再存，或者放到 Vite 环境变量，就安全了吗？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [AI Key, AES, 列表 Key]
 ---
 
-# 把 Key 用 AES 加密后再存，或者放到 Vite 环境变量，就安全了吗？
+# 追问：把 Key 用 AES 加密后再存，或者放到 Vite 环境变量，就安全了吗？
 
 ## 核心回答
 

@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-031-cross-platform
-title: 【高频】这个项目真的支持多端吗？
+title: 追问：【高频】这个项目真的支持多端吗？
 aliases: [能具体解释一下这个项目真的支持多端吗吗？, 从设计取舍看，这个项目真的支持多端吗？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [跨端兼容, 移动端适配, 组件设计, 验证方法, uni-app, Vant Weapp]
 ---
 
-# 【高频】这个项目真的支持多端吗？
+# 追问：【高频】这个项目真的支持多端吗？
 
 ## 核心回答
 

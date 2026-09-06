@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-001-ai-key-localstorage-sessionstorage
-title: AI Key 为什么放在 localStorage？为什么不用 sessionStorage、Cookie 或环境变量？
+title: 追问：AI Key 为什么放在 localStorage？为什么不用 sessionStorage、Cookie 或环境变量？
 aliases: [能具体解释一下AI Key 为什么放在 localStorage？为什么不用 sessionStorage、Cookie 或环境变量吗？, 从设计取舍看，AI Key 为什么放在 localStorage？为什么不用 sessionStorage、Cookie 或环境变量？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [AI Key, localStorage, sessionStorage, HttpOnly Cookie, 列表 Key, 地址管理]
 ---
 
-# AI Key 为什么放在 localStorage？为什么不用 sessionStorage、Cookie 或环境变量？
+# 追问：AI Key 为什么放在 localStorage？为什么不用 sessionStorage、Cookie 或环境变量？
 
 ## 核心回答
 

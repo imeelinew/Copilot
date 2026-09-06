@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-013-sse-websocket-eventsource
-title: AI 为什么用 SSE，不用 WebSocket？为什么用 fetch，不统一走 Axios 或原生 EventSource？
+title: 追问：AI 为什么用 SSE，不用 WebSocket？为什么用 fetch，不统一走 Axios 或原生 EventSource？
 aliases: [能具体解释一下AI 为什么用 SSE，不用 WebSocket？为什么用 fetch，不统一走 Axios 或原生 EventSource吗？, 从设计取舍看，AI 为什么用 SSE，不用 WebSocket？为什么用 fetch，不统一走 Axios 或原生 EventSource？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [SSE, WebSocket, Axios, Fetch, 流式解析]
 ---
 
-# AI 为什么用 SSE，不用 WebSocket？为什么用 fetch，不统一走 Axios 或原生 EventSource？
+# 追问：AI 为什么用 SSE，不用 WebSocket？为什么用 fetch，不统一走 Axios 或原生 EventSource？
 
 ## 核心回答
 

@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-028-homepage-api-organization
-title: 首页 API 和列表 API 为什么分成 `user.js`、`list.js`，但代码又很相似？
+title: 追问：首页 API 和列表 API 为什么分成 `user.js`、`list.js`，但代码又很相似？
 aliases: [能具体解释一下首页 API 和列表 API 为什么分成 `user.js`、`list.js`，但代码又很相似吗？, 从设计取舍看，首页 API 和列表 API 为什么分成 `user.js`、`list.js`，但代码又很相似？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [首页数据, uni-app, 影视小程序]
 ---
 
-# 首页 API 和列表 API 为什么分成 `user.js`、`list.js`，但代码又很相似？
+# 追问：首页 API 和列表 API 为什么分成 `user.js`、`list.js`，但代码又很相似？
 
 ## 核心回答
 

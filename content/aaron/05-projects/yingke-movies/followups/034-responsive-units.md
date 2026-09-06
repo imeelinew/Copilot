@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-034-responsive-units
-title: 为什么同时使用 `rpx` 和 `px`？
+title: 追问：为什么同时使用 `rpx` 和 `px`？
 aliases: [能具体解释一下为什么同时使用 `rpx` 和 `px`吗？, 从设计取舍看，为什么同时使用 `rpx` 和 `px`？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [移动端适配, 组件设计, 验证方法]
 ---
 
-# 为什么同时使用 `rpx` 和 `px`？
+# 追问：为什么同时使用 `rpx` 和 `px`？
 
 ## 核心回答
 

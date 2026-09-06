@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-008-token
-title: Token 真的过期了还能刷新吗？你有 refreshToken 吗？
+title: 追问：Token 真的过期了还能刷新吗？你有 refreshToken 吗？
 aliases: [能具体解释一下Token 真的过期了还能刷新吗？你有 refreshToken 吗吗？, 从设计取舍看，Token 真的过期了还能刷新吗？你有 refreshToken 吗？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [Token, 登录鉴权, React]
 ---
 
-# Token 真的过期了还能刷新吗？你有 refreshToken 吗？
+# 追问：Token 真的过期了还能刷新吗？你有 refreshToken 吗？
 
 ## 核心回答
 

@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-007-settimeout-setinterval
-title: 为什么提前 30 秒刷新？为什么用 setTimeout，不一直 setInterval 检查？
+title: 追问：为什么提前 30 秒刷新？为什么用 setTimeout，不一直 setInterval 检查？
 aliases: [能具体解释一下为什么提前 30 秒刷新？为什么用 setTimeout，不一直 setInterval 检查吗？, 从设计取舍看，为什么提前 30 秒刷新？为什么用 setTimeout，不一直 setInterval 检查？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [Token, JWT, 节流]
 ---
 
-# 为什么提前 30 秒刷新？为什么用 setTimeout，不一直 setInterval 检查？
+# 追问：为什么提前 30 秒刷新？为什么用 setTimeout，不一直 setInterval 检查？
 
 ## 核心回答
 

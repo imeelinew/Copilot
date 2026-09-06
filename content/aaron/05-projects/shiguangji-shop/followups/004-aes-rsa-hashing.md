@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-004-aes-rsa-hashing
-title: 为什么用 AES，不用 RSA、MD5 或 SHA-256？有 HTTPS 还需要前端加密吗？
+title: 追问：为什么用 AES，不用 RSA、MD5 或 SHA-256？有 HTTPS 还需要前端加密吗？
 aliases: [能具体解释一下为什么用 AES，不用 RSA、MD5 或 SHA-256？有 HTTPS 还需要前端加密吗吗？, 从设计取舍看，为什么用 AES，不用 RSA、MD5 或 SHA-256？有 HTTPS 还需要前端加密吗？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [AES, RSA, 密码哈希, HTTPS]
 ---
 
-# 为什么用 AES，不用 RSA、MD5 或 SHA-256？有 HTTPS 还需要前端加密吗？
+# 追问：为什么用 AES，不用 RSA、MD5 或 SHA-256？有 HTTPS 还需要前端加密吗？
 
 ## 核心回答
 

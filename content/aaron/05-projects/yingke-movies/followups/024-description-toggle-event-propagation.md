@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-024-description-toggle-event-propagation
-title: 为什么简介区域要阻止事件冒泡？
+title: 追问：为什么简介区域要阻止事件冒泡？
 aliases: [能具体解释一下为什么简介区域要阻止事件冒泡吗？, 从设计取舍看，为什么简介区域要阻止事件冒泡？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [文本展开, 事件冒泡, 页面导航]
 ---
 
-# 为什么简介区域要阻止事件冒泡？
+# 追问：为什么简介区域要阻止事件冒泡？
 
 ## 核心回答
 

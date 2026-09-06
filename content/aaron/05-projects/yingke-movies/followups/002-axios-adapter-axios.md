@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-002-axios-adapter-axios
-title: 【高频】为什么自己实现 adapter？项目里不是还安装了 `axios-miniprogram` 吗？
+title: 追问：【高频】为什么自己实现 adapter？项目里不是还安装了 `axios-miniprogram` 吗？
 aliases: [能具体解释一下为什么自己实现 adapter？项目里不是还安装了 `axios-miniprogram` 吗吗？, 从设计取舍看，为什么自己实现 adapter？项目里不是还安装了 `axios-miniprogram` 吗？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [Axios, 请求适配器, 请求封装]
 ---
 
-# 【高频】为什么自己实现 adapter？项目里不是还安装了 `axios-miniprogram` 吗？
+# 追问：【高频】为什么自己实现 adapter？项目里不是还安装了 `axios-miniprogram` 吗？
 
 ## 核心回答
 

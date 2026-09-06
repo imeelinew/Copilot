@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-009-promise-allsettled-promise-all
-title: 【高频】为什么使用 `Promise.allSettled`，不用 `Promise.all`？
+title: 追问：【高频】为什么使用 `Promise.allSettled`，不用 `Promise.all`？
 aliases: [能具体解释一下为什么使用 `Promise.allSettled`，不用 `Promise.all`吗？, 从设计取舍看，为什么使用 `Promise.allSettled`，不用 `Promise.all`？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [Promise.allSettled, Promise.all, 首页数据]
 ---
 
-# 【高频】为什么使用 `Promise.allSettled`，不用 `Promise.all`？
+# 追问：【高频】为什么使用 `Promise.allSettled`，不用 `Promise.all`？
 
 ## 核心回答
 

@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-043-pagination
-title: 怎样验证分页没有重复或遗漏？
+title: 追问：怎样验证分页没有重复或遗漏？
 aliases: [能具体解释一下怎样验证分页没有重复或遗漏吗？, 从设计取舍看，怎样验证分页没有重复或遗漏？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [验证方法, 分页, 自动化测试]
 ---
 
-# 怎样验证分页没有重复或遗漏？
+# 追问：怎样验证分页没有重复或遗漏？
 
 ## 核心回答
 

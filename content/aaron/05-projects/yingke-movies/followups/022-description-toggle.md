@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-022-description-toggle
-title: 【高频】简介为什么用 JavaScript 截断，不用 CSS 多行省略？
+title: 追问：【高频】简介为什么用 JavaScript 截断，不用 CSS 多行省略？
 aliases: [能具体解释一下简介为什么用 JavaScript 截断，不用 CSS 多行省略吗？, 从设计取舍看，简介为什么用 JavaScript 截断，不用 CSS 多行省略？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [文本展开, uni-app, 影视小程序]
 ---
 
-# 【高频】简介为什么用 JavaScript 截断，不用 CSS 多行省略？
+# 追问：【高频】简介为什么用 JavaScript 截断，不用 CSS 多行省略？
 
 ## 核心回答
 

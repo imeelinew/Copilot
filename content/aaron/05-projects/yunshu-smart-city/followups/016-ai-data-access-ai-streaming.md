@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-016-ai-data-access-ai-streaming
-title: 你的 AI 怎么查数据库？用了 RAG、向量库或大模型训练吗？模型输出怎么渲染？
+title: 追问：你的 AI 怎么查数据库？用了 RAG、向量库或大模型训练吗？模型输出怎么渲染？
 aliases: [能具体解释一下你的 AI 怎么查数据库？用了 RAG、向量库或大模型训练吗？模型输出怎么渲染吗？, 从设计取舍看，你的 AI 怎么查数据库？用了 RAG、向量库或大模型训练吗？模型输出怎么渲染？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [XSS, React, 智慧城市]
 ---
 
-# 你的 AI 怎么查数据库？用了 RAG、向量库或大模型训练吗？模型输出怎么渲染？
+# 追问：你的 AI 怎么查数据库？用了 RAG、向量库或大模型训练吗？模型输出怎么渲染？
 
 ## 核心回答
 

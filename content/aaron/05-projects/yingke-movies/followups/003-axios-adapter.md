@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-003-axios-adapter
-title: 【高频】这个自定义 adapter 是完整实现吗？
+title: 追问：【高频】这个自定义 adapter 是完整实现吗？
 aliases: [能具体解释一下这个自定义 adapter 是完整实现吗吗？, 从设计取舍看，这个自定义 adapter 是完整实现吗？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [请求适配器, Axios, 分页]
 ---
 
-# 【高频】这个自定义 adapter 是完整实现吗？
+# 追问：【高频】这个自定义 adapter 是完整实现吗？
 
 ## 核心回答
 

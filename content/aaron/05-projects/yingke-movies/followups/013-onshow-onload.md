@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-013-onshow-onload
-title: 【高频】为什么列表初始化放在 `onShow`，不用 `onLoad`？
+title: 追问：【高频】为什么列表初始化放在 `onShow`，不用 `onLoad`？
 aliases: [能具体解释一下为什么列表初始化放在 `onShow`，不用 `onLoad`吗？, 从设计取舍看，为什么列表初始化放在 `onShow`，不用 `onLoad`？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [onShow, onLoad, 影视详情]
 ---
 
-# 【高频】为什么列表初始化放在 `onShow`，不用 `onLoad`？
+# 追问：【高频】为什么列表初始化放在 `onShow`，不用 `onLoad`？
 
 ## 核心回答
 

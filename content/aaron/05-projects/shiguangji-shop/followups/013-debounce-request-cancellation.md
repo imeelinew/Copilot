@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-013-debounce-request-cancellation
-title: 已经有防抖，为什么还要请求版本号？cancel 真的取消请求了吗？
+title: 追问：已经有防抖，为什么还要请求版本号？cancel 真的取消请求了吗？
 aliases: [能具体解释一下已经有防抖，为什么还要请求版本号？cancel 真的取消请求了吗吗？, 从设计取舍看，已经有防抖，为什么还要请求版本号？cancel 真的取消请求了吗？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [防抖, 请求乱序, 请求取消, 请求封装, 订单流程, Fetch]
 ---
 
-# 已经有防抖，为什么还要请求版本号？cancel 真的取消请求了吗？
+# 追问：已经有防抖，为什么还要请求版本号？cancel 真的取消请求了吗？
 
 ## 核心回答
 

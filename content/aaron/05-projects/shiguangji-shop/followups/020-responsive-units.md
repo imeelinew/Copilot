@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-020-responsive-units
-title: 为什么使用 rem，不直接使用 vw 或 px？750、75、375 和 10rem 是什么关系？
+title: 追问：为什么使用 rem，不直接使用 vw 或 px？750、75、375 和 10rem 是什么关系？
 aliases: [能具体解释一下为什么使用 rem，不直接使用 vw 或 px？750、75、375 和 10rem 是什么关系吗？, 从设计取舍看，为什么使用 rem，不直接使用 vw 或 px？750、75、375 和 10rem 是什么关系？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [移动端适配, PostCSS, Vant Weapp]
 ---
 
-# 为什么使用 rem，不直接使用 vw 或 px？750、75、375 和 10rem 是什么关系？
+# 追问：为什么使用 rem，不直接使用 vw 或 px？750、75、375 和 10rem 是什么关系？
 
 ## 核心回答
 

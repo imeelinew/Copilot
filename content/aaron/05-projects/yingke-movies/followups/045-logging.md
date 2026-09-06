@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-045-logging
-title: 为什么代码里保留了大量 `console.log`？
+title: 追问：为什么代码里保留了大量 `console.log`？
 aliases: [能具体解释一下为什么代码里保留了大量 `console.log`吗？, 从设计取舍看，为什么代码里保留了大量 `console.log`？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 深入
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [登录鉴权, 组件设计, Token]
 ---
 
-# 为什么代码里保留了大量 `console.log`？
+# 追问：为什么代码里保留了大量 `console.log`？
 
 ## 核心回答
 

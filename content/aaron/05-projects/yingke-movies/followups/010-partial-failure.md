@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-010-partial-failure
-title: 如果三个分类中的一个请求失败，另外两个还能显示吗？
+title: 追问：如果三个分类中的一个请求失败，另外两个还能显示吗？
 aliases: [能具体解释一下如果三个分类中的一个请求失败，另外两个还能显示吗吗？, 从设计取舍看，如果三个分类中的一个请求失败，另外两个还能显示吗？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [首页数据, 组件设计, Promise.allSettled, Promise.all]
 ---
 
-# 如果三个分类中的一个请求失败，另外两个还能显示吗？
+# 追问：如果三个分类中的一个请求失败，另外两个还能显示吗？
 
 ## 核心回答
 

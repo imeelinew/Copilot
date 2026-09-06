@@ -1,6 +1,6 @@
 ---
 id: yunshu-smart-city-followup-022-map-useref-usestate
-title: 地图和 ECharts 实例为什么用 useRef，不放 useState？切换页面如何清理？
+title: 追问：地图和 ECharts 实例为什么用 useRef，不放 useState？切换页面如何清理？
 aliases: [能具体解释一下地图和 ECharts 实例为什么用 useRef，不放 useState？切换页面如何清理吗？, 从设计取舍看，地图和 ECharts 实例为什么用 useRef，不放 useState？切换页面如何清理？, 这个问题在项目中的实际边界是什么？]
 category: yunshu-smart-city
 difficulty: 进阶
@@ -9,7 +9,7 @@ projects: [云枢智慧城市数据平台]
 keywords: [ECharts, useRef, useState, 高德地图, React, 数据可视化]
 ---
 
-# 地图和 ECharts 实例为什么用 useRef，不放 useState？切换页面如何清理？
+# 追问：地图和 ECharts 实例为什么用 useRef，不放 useState？切换页面如何清理？
 
 ## 核心回答
 

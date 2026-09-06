@@ -1,6 +1,6 @@
 ---
 id: yingke-movies-followup-036-url-check
-title: 【高频】`urlCheck: false` 是什么？上线后能请求任意域名吗？
+title: 追问：【高频】`urlCheck: false` 是什么？上线后能请求任意域名吗？
 aliases: [能具体解释一下`urlCheck: false` 是什么？上线后能请求任意域名吗吗？, 从设计取舍看，`urlCheck: false` 是什么？上线后能请求任意域名吗？, 这个问题在项目中的实际边界是什么？]
 category: yingke-movies
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [映刻影视]
 keywords: [域名校验, 地址管理, HTTPS]
 ---
 
-# 【高频】`urlCheck: false` 是什么？上线后能请求任意域名吗？
+# 追问：【高频】`urlCheck: false` 是什么？上线后能请求任意域名吗？
 
 ## 核心回答
 

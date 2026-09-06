@@ -1,6 +1,6 @@
 ---
 id: shiguangji-shop-followup-018-before-change
-title: 修改数量为什么使用 before-change？为什么传新旧差值，不直接传目标数量？
+title: 追问：修改数量为什么使用 before-change？为什么传新旧差值，不直接传目标数量？
 aliases: [能具体解释一下修改数量为什么使用 before-change？为什么传新旧差值，不直接传目标数量吗？, 从设计取舍看，修改数量为什么使用 before-change？为什么传新旧差值，不直接传目标数量？, 这个问题在项目中的实际边界是什么？]
 category: shiguangji-shop
 difficulty: 基础
@@ -9,7 +9,7 @@ projects: [拾光集移动商城系统]
 keywords: [购物车, Vue 3, 移动商城]
 ---
 
-# 修改数量为什么使用 before-change？为什么传新旧差值，不直接传目标数量？
+# 追问：修改数量为什么使用 before-change？为什么传新旧差值，不直接传目标数量？
 
 ## 核心回答
 
