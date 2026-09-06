@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { categories, questions, searchQuestions } from './content'
 import type { InterviewQuestion } from './types'
-
-// 旧格式（30 秒/标准/深入）通过 AnswerPanel 里的回退映射到新结构。
-const knownSectionNames = new Set(['核心回答', '展开回答', '30 秒回答', '标准回答', '深入回答', '回答要点', '面试官可能追问', '代码证据'])
+import { filterFollowups, getAnswerContent } from './answers'
 
 function renderText(text = '') {
   return text.split('\n').map((line, index) => {
@@ -163,7 +161,7 @@ function App() {
       </main>
 
       <aside className="answer-panel">
-        {selected ? <AnswerPanel question={selected} favorite={favorites.includes(selected.id)} toggleFavorite={toggleFavorite} /> : (
+        {selected ? <AnswerPanel key={selected.id} question={selected} favorite={favorites.includes(selected.id)} toggleFavorite={toggleFavorite} /> : (
           <div className="empty-answer"><span>⌕</span><p>选择一道题查看口语回答</p></div>
         )}
       </aside>
@@ -176,54 +174,95 @@ function AnswerPanel({ question, favorite, toggleFavorite }: {
   favorite: boolean
   toggleFavorite: (id: string) => void
 }) {
-  const coreAnswer = question.sections['核心回答']
-    || question.sections['标准回答']
-    || question.sections['30 秒回答']
-    || ''
-  const extraAnswer = question.sections['展开回答'] || question.sections['深入回答'] || ''
-  // 非标准格式的题目（如整份简历）没有固定小节名，按原文小节顺序展示。
-  const extraSections = coreAnswer || extraAnswer
-    ? []
-    : Object.entries(question.sections).filter(([name]) => !knownSectionNames.has(name))
+  const content = getAnswerContent(question)
+  const [mode, setMode] = useState<'core' | 'followups'>('core')
+  const [filter, setFilter] = useState('')
+  const [activeTitle, setActiveTitle] = useState(content.followups[0]?.title || '')
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const matches = filterFollowups(content.followups, filter)
+  const active = matches.find((item) => item.title === activeTitle) || matches[0]
+  const hasExtras = content.followups.length > 0 || content.points || content.prompts || content.evidence
+
+  function changeMode(next: 'core' | 'followups') {
+    setMode(next)
+    scrollRef.current?.scrollTo({ top: 0 })
+  }
+
+  function openFollowup(title: string) {
+    setActiveTitle(title)
+    setFilter('')
+    changeMode('followups')
+  }
 
   return (
-    <div className="answer-scroll">
+    <div className="answer-reader">
+      <div className="answer-intro">
       <div className="answer-header">
         <div className="answer-meta"><span>{question.categoryLabel}</span><span>{question.difficulty}</span></div>
-        <button className={favorite ? 'favorite active' : 'favorite'} onClick={() => toggleFavorite(question.id)}>{favorite ? '★' : '☆'}</button>
+        <button aria-label={favorite ? '取消收藏' : '收藏题目'} className={favorite ? 'favorite active' : 'favorite'} onClick={() => toggleFavorite(question.id)}>{favorite ? '★' : '☆'}</button>
       </div>
       <h2>{question.title}</h2>
+      {hasExtras && (
+        <div className="answer-modes" role="group" aria-label="回答模式">
+          <button aria-pressed={mode === 'core'} onClick={() => changeMode('core')}>核心回答</button>
+          <button aria-pressed={mode === 'followups'} onClick={() => changeMode('followups')}>追问速查 <span>{content.followups.length || '补充'}</span></button>
+        </div>
+      )}
+      </div>
+      <div ref={scrollRef} className="answer-scroll">
 
-      {coreAnswer && (
+      {mode === 'core' && <>
+      {content.core && (
         <section className="answer-card core">
-          <div className="section-title"><span className="quote-mark">“</span><strong>核心回答</strong></div>
-          <div className="answer-body">{renderText(coreAnswer)}</div>
+          <div className="section-title"><span className="quote-mark">“</span><strong>先这样回答</strong></div>
+          <div className="answer-body">{renderText(content.core)}</div>
         </section>
       )}
 
-      {extraAnswer && (
-        <section className="answer-card extra">
-          <div className="section-title"><strong>展开回答</strong></div>
-          <div className="answer-body">{renderText(extraAnswer)}</div>
-        </section>
-      )}
-
-      {extraSections.map(([name, text]) => (
+      {content.otherSections.map(([name, text]) => (
         <section key={name} className="answer-card">
           <div className="section-title"><strong>{name}</strong></div>
           <div className="answer-body">{renderText(text)}</div>
         </section>
       ))}
+      {content.followups.length > 0 && (
+        <nav className="quick-followups" aria-label="本题追问入口">
+          <div className="section-title"><strong>面试官接着问</strong><span>点问题，直接看回答</span></div>
+          {content.followups.map((item) => <button key={item.title} onClick={() => openFollowup(item.title)}>{item.title}<span aria-hidden="true">↗</span></button>)}
+        </nav>
+      )}
+      </>}
 
-      {question.sections['回答要点'] && (
-        <section className="answer-card points"><div className="section-title"><span>✓</span><strong>回答要点</strong></div><ul>{renderText(question.sections['回答要点'])}</ul></section>
+      {mode === 'followups' && <>
+      {content.followups.length > 0 && <>
+        <div className="followup-finder">
+          <label htmlFor="followup-search">查本题追问</label>
+          <div className="followup-search">
+            <input id="followup-search" value={filter} onChange={(event) => setFilter(event.target.value)} placeholder="输入关键词，如：并发、为什么、失败" />
+            {filter && <button aria-label="清空追问搜索" onClick={() => setFilter('')}>×</button>}
+          </div>
+          <nav className="followup-options" aria-label="选择追问">
+            {matches.map((item, index) => <button key={item.title} aria-pressed={active?.title === item.title} onClick={() => {
+              setActiveTitle(item.title)
+              scrollRef.current?.scrollTo({ top: 0 })
+            }}><span>{String(index + 1).padStart(2, '0')}</span>{item.title}</button>)}
+          </nav>
+        </div>
+        {active ? <section key={active.title} className="answer-card followup-answer" aria-label="追问回答" tabIndex={0}>
+          <div className="section-title"><strong>被问到这里，再这样说</strong></div>
+          <h3>{active.title}</h3>
+          <div className="answer-body">{renderText(active.answer)}</div>
+        </section> : <div className="followup-empty" role="status"><p>本题没有匹配的追问，试试更短的关键词。</p><button onClick={() => setFilter('')}>查看全部追问</button></div>}
+      </>}
+      {content.points && (
+        <details className="answer-notes"><summary>回答要点</summary><div>{renderText(content.points)}</div></details>
       )}
-      {question.sections['面试官可能追问'] && (
-        <section className="answer-card followups"><div className="section-title"><span>↳</span><strong>面试官可能追问</strong></div><ul>{renderText(question.sections['面试官可能追问'])}</ul></section>
+      {content.prompts && (
+        <details className="answer-notes"><summary>其他待准备的追问</summary><div>{renderText(content.prompts)}</div></details>
       )}
-      {question.sections['代码证据'] && (
-        <section className="evidence"><span>CODE EVIDENCE</span><div>{renderText(question.sections['代码证据'])}</div></section>
-      )}
+      {content.evidence && <details className="answer-notes"><summary>代码参考</summary><div className="evidence">{renderText(content.evidence)}</div></details>}
+      </>}
+      </div>
     </div>
   )
 }

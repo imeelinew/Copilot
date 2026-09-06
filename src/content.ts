@@ -1,4 +1,5 @@
 import type { InterviewQuestion, SearchResult } from './types'
+import { parseAnswerSections } from './answers'
 
 const markdownModules = import.meta.glob('../content/**/*.md', {
   eager: true,
@@ -44,18 +45,7 @@ function parseMarkdown(sourcePath: string, raw: string): InterviewQuestion {
   }
 
   const body = raw.slice(frontmatterMatch?.[0].length ?? 0)
-  const sections: Record<string, string> = {}
-  const headingPattern = /^## (.+)$/gm
-  const headings = [...body.matchAll(headingPattern)]
-
-  headings.forEach((heading, index) => {
-    const start = (heading.index ?? 0) + heading[0].length
-    const end = headings[index + 1]?.index ?? body.length
-    sections[heading[1].trim()] = body.slice(start, end).trim()
-  })
-
-  // 没有 ## 小节的文件（如整篇自我介绍）把正文整体作为一个小节展示。
-  if (!headings.length) sections['正文'] = body.replace(/^# .*\n+/, '').trim()
+  const sections = parseAnswerSections(body)
 
   const category = meta.category || 'engineering'
   return {
@@ -115,8 +105,11 @@ export function searchQuestions(query: string, category = 'all'): SearchResult[]
       // 短关键词（如“缓存”）只能召回候选，不能单独形成高置信度命中。
       const keywordScore = Math.max(0, ...question.keywords.map((keyword) => similarity(query, keyword) * 0.45))
       const projectScore = Math.max(0, ...question.projects.map((project) => similarity(query, project) * 0.55))
+      const followupScore = Math.max(0, ...Object.keys(question.sections)
+        .filter((name) => name.startsWith('追问：'))
+        .map((name) => similarity(query, name.slice(3)) * 0.85))
       const bodyScore = similarity(query, Object.values(question.sections).join(' ')) * 0.35
-      return { question, score: Math.max(titleScore, aliasScore, keywordScore, projectScore, bodyScore) }
+      return { question, score: Math.max(titleScore, aliasScore, keywordScore, projectScore, bodyScore, followupScore) }
     })
     .filter((result) => result.score >= 12)
     .sort((a, b) => b.score - a.score)
