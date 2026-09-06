@@ -46,6 +46,9 @@ const categoryLabels: Record<string, string> = {
   datapilot: '城市视图',
   'after-sales': '智服工单',
   'ai-agent': 'AI 与 Agent',
+  'shiguangji-shop': '拾光集移动商城',
+  'yingke-movies': '映刻影视',
+  'yunshu-smart-city': '云枢智慧城市数据平台',
 }
 
 function parseList(value = '') {
