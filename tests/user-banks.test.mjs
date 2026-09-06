@@ -39,6 +39,17 @@ test('two clean browser stores resolve identical users and banks without importi
   assert.deepEqual(buildRepositoryBanks(users, []).map((user) => user.questions), [[], []])
 })
 
+test('repository user search matches an answered follow-up heading', () => {
+  const followup = {
+    ...document('request-failure', '请求策略'),
+    name: 'aaron/react/request-failure.md',
+  }
+  followup.raw += '\n\n## 追问：请求失败怎么办？\n\n取消旧请求并展示可重试的错误状态。'
+  const banks = buildRepositoryBanks(users, [followup])
+  const results = searchQuestions(banks[1].questions, '请求失败怎么办')
+  assert.equal(results[0].question.id, 'request-failure')
+})
+
 test('registry rejects unknown folders, duplicate users and duplicate IDs within one bank', () => {
   assert.throws(() => buildRepositoryBanks(users, [{ ...docs[0], name: 'unknown/q.md' }]), /已配置/)
   assert.throws(() => buildRepositoryBanks(users, [{ ...docs[0], name: 'default/../aaron/q.md' }]))
