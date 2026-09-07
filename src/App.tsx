@@ -48,6 +48,10 @@ function App() {
     link.click()
     setTimeout(() => URL.revokeObjectURL(url), 1000)
   }
+  function switchUser(id: string) {
+    if (!repositoryUsers.some((item) => item.id === id)) return
+    save({ ...store, activeUserId: id })
+  }
   return <>
     {error && <div className="storage-error" role="alert">{error}</div>}
     {legacyBackup && <div className="legacy-notice">
@@ -55,7 +59,7 @@ function App() {
       <button onClick={exportLegacy}>导出旧数据</button>
     </div>}
     <UserWorkspace key={user.id} user={user} favorites={Array.isArray(store.favorites[user.id]) ? store.favorites[user.id] : []}
-      switchUser={(id) => save({ ...store, activeUserId: id })}
+      switchUser={switchUser}
       updateFavorites={(favorites) => save({ ...store, favorites: { ...store.favorites, [user.id]: favorites } })}
     />
   </>
@@ -230,7 +234,7 @@ function UserWorkspace({ user, favorites, switchUser, updateFavorites }: {
           {!!questions.length && !query && !results.length && <p className="import-message">当前分类暂无题目。</p>}
           {results.map(({ question, score }) => (
             <button
-              key={question.id}
+              key={`${user.id}:${question.id}`}
               className={`question-row ${selected?.id === question.id ? 'selected' : ''}`}
               onClick={() => { agentRequest.current?.abort(); setSelectedId(question.id); setAgentState('idle') }}
             >
@@ -258,7 +262,7 @@ function UserWorkspace({ user, favorites, switchUser, updateFavorites }: {
       </main>
 
       <aside className="answer-panel">
-        {selected ? <AnswerPanel key={selected.id} question={selected} favorite={favorites.includes(selected.id)} toggleFavorite={toggleFavorite} /> : (
+        {selected ? <AnswerPanel key={`${user.id}:${selected.id}`} question={selected} favorite={favorites.includes(selected.id)} toggleFavorite={toggleFavorite} /> : (
           <div className="empty-answer"><span>⌕</span><p>选择一道题查看口语回答</p></div>
         )}
       </aside>

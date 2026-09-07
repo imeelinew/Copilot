@@ -10,6 +10,12 @@ function stringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every((item) => typeof item === 'string')
 }
 
+function knownFavorites(value: unknown, userIds: string[]) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return {}
+  return Object.fromEntries(Object.entries(value)
+    .filter(([userId, favorites]) => userIds.includes(userId) && stringArray(favorites))) as Record<string, string[]>
+}
+
 // 这里只保存浏览偏好；用户列表与题库始终来自仓库。
 export function loadProfiles(storage: Pick<Storage, 'getItem'>, userIds: string[]): ProfileStore {
   const fallback = { activeUserId: userIds[0], favorites: {} }
@@ -20,17 +26,17 @@ export function loadProfiles(storage: Pick<Storage, 'getItem'>, userIds: string[
       if (!value || typeof value.favorites !== 'object' || !value.favorites || Array.isArray(value.favorites)) return fallback
       return {
         activeUserId: userIds.includes(value.activeUserId) ? value.activeUserId : userIds[0],
-        favorites: Object.fromEntries(Object.entries(value.favorites).filter((entry) => stringArray(entry[1]))) as Record<string, string[]>,
+        favorites: knownFavorites(value.favorites, userIds),
       }
     }
     const legacy = JSON.parse(storage.getItem(LEGACY_STORAGE_KEY) || 'null')
     if (legacy && Array.isArray(legacy.users)) {
       return {
         activeUserId: userIds.includes(legacy.activeUserId) ? legacy.activeUserId : userIds[0],
-        favorites: Object.fromEntries(legacy.users
+        favorites: knownFavorites(Object.fromEntries(legacy.users
           .filter((user: { id?: unknown; favorites?: unknown } | null) => user &&
-            typeof user.id === 'string' && stringArray(user.favorites))
-          .map((user: { id: string; favorites: string[] }) => [user.id, user.favorites])),
+            typeof user.id === 'string' && userIds.includes(user.id) && stringArray(user.favorites))
+          .map((user: { id: string; favorites: string[] }) => [user.id, user.favorites])), userIds),
       }
     }
     const oldFavorites: unknown = JSON.parse(storage.getItem('interview-favorites') || '[]')

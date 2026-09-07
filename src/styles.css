@@ -151,13 +151,14 @@ button:focus-visible, input:focus-visible, section:focus-visible, summary:focus-
   .sidebar { display: none; }
   .main-panel { padding: 24px 16px; }
   .question-row { grid-template-columns: minmax(0, 1fr) 12px; gap: 5px; padding: 13px 8px; }
-  .match-score, .search-wrap kbd, .avatar { display: none; }
+  .match-score, .search-wrap kbd { display: none; }
 }
 @media (max-width: 640px) {
   .app-shell { display: flex; flex-direction: column; height: 100dvh; overflow: hidden; }
   .main-panel { flex: none; height: 34dvh; min-height: 0; overflow: auto; border-right: 0; padding: 16px; }
   .topbar { margin-bottom: 14px; }
   .topbar h1 { font-size: 22px; }
+  .avatar { width: 32px; height: 32px; }
   .eyebrow { display: none; }
   .result-heading { margin-top: 18px; }
   .answer-panel { position: relative; flex: 1; min-height: 0; height: auto; border-top: 1px solid var(--line); }

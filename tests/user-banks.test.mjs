@@ -99,6 +99,9 @@ test('current user and separate favorites survive reload; unavailable storage do
   }
   assert.equal(loadProfiles({ getItem() { throw new Error('blocked') } }, ids).activeUserId, 'default')
   assert.equal(loadProfiles(storage({ [PROFILE_STORAGE_KEY]: '{"activeUserId":"removed","favorites":{}}' }), ids).activeUserId, 'default')
+  assert.deepEqual(loadProfiles(storage({ [PROFILE_STORAGE_KEY]: JSON.stringify({ activeUserId: 'aaron', favorites: { default: ['same'], aaron: ['same'], stranger: ['secret'] } }) }), ids), {
+    activeUserId: 'aaron', favorites: { default: ['same'], aaron: ['same'] },
+  })
 })
 
 test('invalid Markdown is rejected and Windows line endings are supported', () => {
