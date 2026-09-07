@@ -217,7 +217,7 @@ function UserWorkspace({ user, favorites, switchUser, updateFavorites }: {
 
         <p className="bank-origin">已发布题库 · 各浏览器均可访问</p>
         <div className="result-heading">
-          <span>{query ? `找到 ${results.length} 个相关回答` : `${user.name} 的题库 · 优先复习`}</span>
+          <span>{query ? `找到 ${results.length} 个相关回答` : `${user.name} 的题库 · ${results.length} 道题`}</span>
           {query && <small>按匹配程度排序</small>}
         </div>
 
@@ -234,7 +234,6 @@ function UserWorkspace({ user, favorites, switchUser, updateFavorites }: {
               className={`question-row ${selected?.id === question.id ? 'selected' : ''}`}
               onClick={() => { agentRequest.current?.abort(); setSelectedId(question.id); setAgentState('idle') }}
             >
-              <span className="question-priority">{question.priority === 'high' ? '重点' : question.difficulty}</span>
               <span className="question-copy"><strong>{question.title}</strong><small>{question.categoryLabel} · {question.keywords.slice(0, 3).join(' · ')}</small></span>
               {query && <span className="match-score">{Math.min(99, Math.round(score))}%</span>}
               <span className="row-arrow">›</span>

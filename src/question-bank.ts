@@ -59,7 +59,7 @@ export function buildQuestionBank(base: InterviewQuestion[], documents: { name: 
     if (bank.has(question.id)) throw new Error(`${document.name}：题目 ID「${question.id}」已存在`)
     bank.set(question.id, question)
   }
-  return [...bank.values()].sort((a, b) => Number(b.priority === 'high') - Number(a.priority === 'high'))
+  return [...bank.values()]
 }
 
 const categoryLabels: Record<string, string> = {
@@ -156,7 +156,7 @@ export function searchQuestions(questions: InterviewQuestion[], query: string, c
     : questions.filter((question) => question.category === category)
 
   if (!query.trim()) {
-    return candidates.slice(0, 12).map((question) => ({ question, score: 1 }))
+    return candidates.map((question) => ({ question, score: 1 }))
   }
 
   return candidates
@@ -174,7 +174,6 @@ export function searchQuestions(questions: InterviewQuestion[], query: string, c
     })
     .filter((result) => result.score >= 12)
     .sort((a, b) => b.score - a.score)
-    .slice(0, 20)
 }
 
 export function getCategories(questions: InterviewQuestion[]) {

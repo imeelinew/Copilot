@@ -55,6 +55,19 @@ test('repository user search matches an answered follow-up heading', () => {
   assert.equal(results[0].question.id, 'request-failure')
 })
 
+test('快查列表展示全部结果，不按优先级截断或重排', () => {
+  const documents = Array.from({ length: 25 }, (_, index) => {
+    const item = document(`flat-${index}`, 'React 快查题', 'react')
+    if (index === 24) item.raw = item.raw.replace('category: react', 'category: react\npriority: high')
+    item.name = `default/flat-${index}.md`
+    return item
+  })
+  const questions = buildQuestionBank([], documents)
+  assert.deepEqual(questions.map((question) => question.id), documents.map((item) => item.raw.match(/^id: (.+)$/m)[1]))
+  assert.equal(searchQuestions(questions, '').length, 25)
+  assert.equal(searchQuestions(questions, 'React').length, 25)
+})
+
 test('registry rejects unknown folders, duplicate users and duplicate IDs within one bank', () => {
   assert.throws(() => buildRepositoryBanks(users, [{ ...docs[0], name: 'unknown/q.md' }]), /已配置/)
   assert.throws(() => buildRepositoryBanks(users, [{ ...docs[0], name: 'default/../aaron/q.md' }]))

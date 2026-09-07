@@ -53,11 +53,9 @@ button { color: inherit; }
 .result-heading { display: flex; align-items: center; justify-content: space-between; margin: 30px 2px 12px; color: #716e67; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .result-heading small { color: #aaa69d; font-size: 9px; font-weight: 500; }
 .question-list { display: flex; flex-direction: column; gap: 7px; }
-.question-row { display: grid; grid-template-columns: 46px minmax(0, 1fr) auto 18px; gap: 12px; align-items: center; width: 100%; padding: 15px 14px; border: 1px solid transparent; border-radius: 10px; background: transparent; cursor: pointer; text-align: left; transition: .16s ease; }
+.question-row { display: grid; grid-template-columns: minmax(0, 1fr) auto 18px; gap: 12px; align-items: center; width: 100%; padding: 15px 14px; border: 1px solid transparent; border-radius: 10px; background: transparent; cursor: pointer; text-align: left; transition: .16s ease; }
 .question-row:hover { background: rgba(255,255,255,.55); }
 .question-row.selected { border-color: #e5ddd5; background: var(--paper); box-shadow: 0 4px 16px rgba(55,49,39,.045); }
-.question-priority { padding: 4px 5px; border-radius: 4px; color: #896e60; background: #eee8e1; font-size: 9px; text-align: center; }
-.selected .question-priority { color: #bd542d; background: var(--accent-soft); }
 .question-copy { display: flex; min-width: 0; flex-direction: column; }
 .question-copy strong { overflow: hidden; font-size: 13px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
 .question-copy small { overflow: hidden; margin-top: 5px; color: #99958e; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
@@ -153,7 +151,7 @@ button:focus-visible, input:focus-visible, section:focus-visible, summary:focus-
   .sidebar { display: none; }
   .main-panel { padding: 24px 16px; }
   .question-row { grid-template-columns: minmax(0, 1fr) 12px; gap: 5px; padding: 13px 8px; }
-  .question-priority, .match-score, .search-wrap kbd, .avatar { display: none; }
+  .match-score, .search-wrap kbd, .avatar { display: none; }
 }
 @media (max-width: 640px) {
   .app-shell { display: flex; flex-direction: column; height: 100dvh; overflow: hidden; }
