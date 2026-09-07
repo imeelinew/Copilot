@@ -21,7 +21,7 @@ keywords: [生命周期, componentDidMount, getDerivedStateFromProps, UNSAFE]
 
 ## 展开回答
 
-还有个 componentDidCatch，用来捕获子树里的渲染错误，包了它的那部分组件崩了不至于整页白屏，这种组件叫错误边界。面试时能主动讲清楚废弃原因，比干背十几个钩子名字加分得多。
+还有个 componentDidCatch，用来捕获子树里的渲染错误，包了它的那部分组件崩了不至于整页白屏，这种组件叫错误边界。面试时我会把废弃原因和现在的替代方式一起讲，单独背一串钩子名字其实不太能说明问题。
 
 ## 面试官可能追问
 

@@ -15,7 +15,7 @@ keywords: [display, visibility, opacity, 重排重绘]
 
 三个都能让元素看不见，但程度完全不同。display: none 是彻底从渲染树里拿掉，不占空间，会触发重排，元素和里面的子元素都收不到事件。visibility: hidden 布局还在，位置照样占着，只是不画出来，也不响应交互，只触发重绘；它的子元素可以单独设 visibility: visible 变回可见。opacity: 0 只是把透明度调成 0，布局和事件都在，照样能点到，而且透明度是作用于整个元素的，子元素没法单独调回来。
 
-一句话总结：display: none 不占位不响应，visibility: hidden 占位不响应，opacity: 0 占位还响应。
+我会这样记：display: none 不占位也不响应，visibility: hidden 占位但不响应，opacity: 0 占位并且仍然响应事件。
 
 ## 展开回答
 

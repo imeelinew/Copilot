@@ -16,13 +16,18 @@ const docs = [
   { ...document('same', '独有测试题'), name: 'aaron/react/same.md' },
 ]
 
-test('repository content has 137 original questions and a separate Aaron bank', () => {
+test('repository content keeps the 137-question baseline and adds a separate Aaron bank', () => {
   const root = new URL('../content/', import.meta.url)
   const registry = JSON.parse(readFileSync(new URL('users.json', root), 'utf8'))
   const documents = readdirSync(root, { recursive: true }).filter((name) => name.endsWith('.md'))
     .map((name) => ({ name, raw: readFileSync(new URL(name, root), 'utf8') }))
   const banks = buildRepositoryBanks(registry, documents)
-  assert.equal(banks.find((user) => user.id === 'default').questions.length, 137)
+  const defaultQuestions = banks.find((user) => user.id === 'default').questions
+  assert.ok(defaultQuestions.length >= 137)
+  assert.ok(defaultQuestions.length > 137, '扩充计划应在原有题库之外新增题目')
+  assert.ok(defaultQuestions.some((question) => question.category === 'coding'))
+  assert.ok(defaultQuestions.some((question) => question.category === 'testing'))
+  assert.ok(defaultQuestions.some((question) => question.category === 'system-design'))
   assert.ok(banks.some((user) => user.id === 'aaron'))
 })
 
